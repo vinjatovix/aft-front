@@ -1,11 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { UserCard } from "./UserCard";
+import { BookCard } from "./BookCard";
 
 const Card = ({ data, type, actions, isAdmin, token }) => {
   return (
     <div className="card" onClick={() => actions.setDataDetail(data)}>
       {type === "user" && <UserCard data={data} />}
+
+      {type === "book" && (
+        <BookCard
+          data={data}
+          isAdmin={isAdmin}
+          actions={actions}
+          token={token}
+        />
+      )}
     </div>
   );
 };

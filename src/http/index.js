@@ -28,7 +28,45 @@ const fetchUpdatePassword = async (token, body) =>
     }
   );
 
+const fetchBooks = async (token) =>
+  fetcher(api.book.getAll.path, api.book.getAll.method, { token });
+
+const fetchBookById = async (token, id) =>
+  fetcher(api.book.getById.path.replace(":id", id), api.book.getById.method, {
+    token,
+  });
+
+const fetchAddBook = async (token, body) =>
+  fetcher(api.book.addBook.path, api.book.addBook.method, {
+    token,
+    body,
+  });
+
+const fetchDeleteBook = async (token, id) =>
+  fetcher(
+    api.book.deleteBook.path.replace(":id", id),
+    api.book.deleteBook.method,
+    {
+      token,
+    }
+  );
+
+const fetchUpdateBook = async (token, id, body) =>
+  fetcher(
+    api.book.updateBook.path.replace(":id", id),
+    api.book.updateBook.method,
+    {
+      token,
+      body,
+    }
+  );
+
 module.exports = {
   fetchLogin,
   fetchUpdatePassword,
+  fetchBooks,
+  fetchBookById,
+  fetchAddBook,
+  fetchDeleteBook,
+  fetchUpdateBook,
 };
