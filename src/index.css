@@ -58,6 +58,7 @@
 .bg-blue {
   background-color: var(--blue);
 }
+
 .modal {
   position: fixed;
   z-index: 1;
@@ -130,10 +131,57 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
 }
+
 a {
   text-decoration: none;
   color: rgb(91, 91, 91);
 }
+
+.login-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  background-color: var(--black-gray);
+  border-radius: 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  justify-items: stretch;
+  align-content: center;
+}
+
+.card li {
+  list-style: none;
+}
+
+.card img {
+  max-height: 170px;
+  width: auto;
+}
+
+.book-list {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+}
+
 .characters-list {
   display: flex;
   flex-direction: column;
