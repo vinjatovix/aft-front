@@ -13,6 +13,7 @@ exports[`CardGrid Component should render a book card grid with 3 cards 1`] = `
       >
         <ul
           class="book"
+          data-testid="book-detail"
         >
           <img
             alt="Obra"
@@ -52,6 +53,7 @@ exports[`CardGrid Component should render a book card grid with 3 cards 1`] = `
       >
         <ul
           class="book"
+          data-testid="book-detail"
         >
           <img
             alt="Obra"
@@ -91,6 +93,7 @@ exports[`CardGrid Component should render a book card grid with 3 cards 1`] = `
       >
         <ul
           class="book"
+          data-testid="book-detail"
         >
           <img
             alt="Obra"

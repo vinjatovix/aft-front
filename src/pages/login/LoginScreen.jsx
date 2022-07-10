@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useForm } from "../../hooks/useForm";
 
@@ -9,6 +9,7 @@ import { resetMessage } from "../../helpers/resetMessage";
 
 export const LoginScreen = () => {
   const { auth, setAuth } = useContext(UserContext);
+
   const initMessage = { type: null, text: null };
   const [responseMessage, setResponseMessage] = useState(initMessage);
   const [formState, handleChange, resetForm] = useForm({
@@ -42,9 +43,14 @@ export const LoginScreen = () => {
     setAuth({});
   };
 
+  console.log(auth);
   return (
     <>
-      {!auth.user && (
+      {auth && auth.user && (
+        <UserPanel user={auth} handleLogOut={handleLogOut} />
+      )}
+      
+      {(!auth || !auth.user) && (
         <LoginForm
           formState={formState}
           handleChange={handleChange}
@@ -52,8 +58,6 @@ export const LoginScreen = () => {
           message={responseMessage}
         />
       )}
-
-      {auth.user && <UserPanel user={auth} handleLogOut={handleLogOut} />}
     </>
   );
 };

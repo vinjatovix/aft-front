@@ -9,6 +9,7 @@ export const BookCard = ({ data, isAdmin, actions, token }) => {
   return (
     <div className="flex-wrapper column">
       <ul
+        data-testid="book-detail"
         className="book"
         onClick={() => {
           actions.detail();

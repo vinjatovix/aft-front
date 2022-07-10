@@ -12,6 +12,7 @@ export const LoginForm = ({
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="text"
+          data-testid="username"
           id="username"
           name="username"
           placeholder="Enter user"
@@ -20,6 +21,7 @@ export const LoginForm = ({
         />
         <input
           type="password"
+          data-testid="password"
           id="password"
           name="password"
           placeholder="Enter password"
