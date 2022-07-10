@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookDetail Component should render correctly 1`] = `
+<div>
+  <div
+    class="detail"
+  >
+    <p>
+      Obra
+    </p>
+    <p
+      class="small"
+    >
+      Autor
+    </p>
+    <img
+      alt="book"
+      src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+    />
+    <p>
+      Descripción
+    </p>
+  </div>
+</div>
+`;
