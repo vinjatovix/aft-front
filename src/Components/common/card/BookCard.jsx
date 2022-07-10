@@ -29,7 +29,7 @@ export const BookCard = ({ data, isAdmin, actions, token }) => {
               actions.edit();
             }}
           >
-            📝editar
+            📝 editar
           </button>
           <button
             className="bg-red"
