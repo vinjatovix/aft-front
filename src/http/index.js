@@ -61,6 +61,15 @@ const fetchUpdateBook = async (token, id, body) =>
     }
   );
 
+const fetchCharactersByBookId = async (token, id) =>
+  fetcher(
+    api.character.getByBookId.path.replace(":id", id),
+    api.character.getByBookId.method,
+    {
+      token,
+    }
+  );
+
 module.exports = {
   fetchLogin,
   fetchUpdatePassword,
@@ -69,4 +78,5 @@ module.exports = {
   fetchAddBook,
   fetchDeleteBook,
   fetchUpdateBook,
+  fetchCharactersByBookId,
 };

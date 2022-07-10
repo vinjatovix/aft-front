@@ -8,6 +8,7 @@ import {
 
 import NavBar from "../helpers/navBar/NavBar";
 import { BooksScreen } from "../pages/books/BooksScreen";
+import { CharactersScreen } from "../pages/characters/CharactersScreen";
 import { LoginScreen } from "../pages/login/LoginScreen";
 
 export const AftRouter = () => (
@@ -15,6 +16,7 @@ export const AftRouter = () => (
     <NavBar />
     <Routes>
       <Route path="/books" element={<BooksScreen />} />
+      <Route path="/characters/book/:bookId" element={<CharactersScreen />} />
       <Route path="/login" element={<LoginScreen />} />
 
       <Route path="*" element={<Navigate to="/login" />} />
