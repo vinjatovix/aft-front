@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardGrid Component should render a book card grid with 3 cards 1`] = `
+<div>
+  <div
+    class="card-grid"
+  >
+    <div
+      class="card"
+    >
+      <div
+        class="flex-wrapper column"
+      >
+        <ul
+          class="book"
+        >
+          <img
+            alt="Obra"
+            src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+          />
+          <li
+            class=""
+            data-testid="Obra"
+          >
+            Obra
+          </li>
+          <li
+            class="small"
+            data-testid="Autor"
+          >
+            Autor
+          </li>
+        </ul>
+        <a
+          class=""
+          href="/characters/book/5e9f8f8f8f8f8f8f8f8f8f8"
+        >
+          <button
+            class="bg-blue"
+            data-testid="char-button"
+          >
+            🎭 Personajes
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <div
+        class="flex-wrapper column"
+      >
+        <ul
+          class="book"
+        >
+          <img
+            alt="Obra"
+            src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+          />
+          <li
+            class=""
+            data-testid="Obra"
+          >
+            Obra
+          </li>
+          <li
+            class="small"
+            data-testid="Autor"
+          >
+            Autor
+          </li>
+        </ul>
+        <a
+          class=""
+          href="/characters/book/5e9f8f8f8f8f8f8f8f8f8f7"
+        >
+          <button
+            class="bg-blue"
+            data-testid="char-button"
+          >
+            🎭 Personajes
+          </button>
+        </a>
+      </div>
+    </div>
+    <div
+      class="card"
+    >
+      <div
+        class="flex-wrapper column"
+      >
+        <ul
+          class="book"
+        >
+          <img
+            alt="Obra"
+            src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+          />
+          <li
+            class=""
+            data-testid="Obra"
+          >
+            Obra
+          </li>
+          <li
+            class="small"
+            data-testid="Autor"
+          >
+            Autor
+          </li>
+        </ul>
+        <a
+          class=""
+          href="/characters/book/5e9f8f8f8f8f8f8f8f8f8f6"
+        >
+          <button
+            class="bg-blue"
+            data-testid="char-button"
+          >
+            🎭 Personajes
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CardGrid Component should render a works card grid with 3 cards 1`] = `
+<div>
+  <div
+    class="card-grid"
+  >
+    <div
+      class="card"
+    />
+    <div
+      class="card"
+    />
+    <div
+      class="card"
+    />
+  </div>
+</div>
+`;

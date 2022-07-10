@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookCard Component should match snapshot 1`] = `
+<div>
+  <div
+    class="flex-wrapper column"
+  >
+    <ul
+      class="book"
+    >
+      <img
+        alt="Obra"
+        src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+      />
+      <li
+        class=""
+        data-testid="Obra"
+      >
+        Obra
+      </li>
+      <li
+        class="small"
+        data-testid="Autor"
+      >
+        Autor
+      </li>
+    </ul>
+    <a
+      class=""
+      href="/characters/book/5e9f8f8f8f8f8f8f8f8f8f8"
+    >
+      <button
+        class="bg-blue"
+        data-testid="char-button"
+      >
+        🎭 Personajes
+      </button>
+    </a>
+    <div
+      class="control-panel-mini"
+    >
+      <button
+        class="bg-yellow"
+        data-testid="edit-button"
+      >
+        📝 editar
+      </button>
+      <button
+        class="bg-red"
+        data-testid="delete-button"
+      >
+        🗑️ eliminar
+      </button>
+    </div>
+  </div>
+</div>
+`;

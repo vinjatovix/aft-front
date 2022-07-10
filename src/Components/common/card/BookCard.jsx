@@ -19,12 +19,15 @@ export const BookCard = ({ data, isAdmin, actions, token }) => {
         <ListItem name="Autor" className="small" children={data.author} />
       </ul>
       <NavLink to={`/characters/book/${data._id}`}>
-        <button className="bg-blue">🎭 Personajes</button>
+        <button data-testid="char-button" className="bg-blue">
+          🎭 Personajes
+        </button>
       </NavLink>
       {isAdmin && (
         <div className="control-panel-mini">
           <button
             className="bg-yellow"
+            data-testid="edit-button"
             onClick={() => {
               actions.edit();
             }}
@@ -32,6 +35,7 @@ export const BookCard = ({ data, isAdmin, actions, token }) => {
             📝 editar
           </button>
           <button
+            data-testid="delete-button"
             className="bg-red"
             onClick={() => {
               actions.delete(token, data._id);

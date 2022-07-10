@@ -21,7 +21,8 @@ export const CardGrid = ({ data, actions, isAdmin, type, token }) => {
 
 CardGrid.propTypes = {
   type: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({ _id: PropTypes.string.isRequired }))
+    .isRequired,
   actions: PropTypes.object.isRequired,
   isAdmin: PropTypes.bool,
   token: PropTypes.string,
