@@ -42,6 +42,17 @@ export const BookForm = ({
           placeholder="Url imagen"
         />
       </div>
+      <div className="form-group">
+        <input
+          className="form-control"
+          type="text"
+          id="description"
+          name="description"
+          value={formState.description}
+          onChange={handleChange}
+          placeholder="Descripción"
+        />
+      </div>
       <button type="submit" className="bg-green">
         Enviar
       </button>

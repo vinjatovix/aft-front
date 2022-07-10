@@ -353,3 +353,26 @@ input {
   padding: 0.5rem 1rem;
   gap: 0.5rem;
 }
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  list-style: none;
+}
+.users-list_item:hover {
+  background-color: var(--yellow);
+  cursor: pointer;
+}
+
+.users-list_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--black-clean);
+  border-bottom: 1px solid var(--yellow);
+}
