@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const ListItem = ({ className, name, children }) => (
-  <li className={className} key={name}>
+  <li data-testid={name} className={className} key={name}>
     {children}
   </li>
 );
