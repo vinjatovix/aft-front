@@ -34,5 +34,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "config": {
+    "commit-message-validator": {
+      "pattern": "^\\[AFTF-[\\d]+\\]\\s.*$",
+      "errorMessage": "Invalid commit message. Valid example: [AFT-123] Fix typo"
+    }
+  },
+  "devDependencies": {
+    "commit-message-validator": "^1.0.2"
   }
 }
