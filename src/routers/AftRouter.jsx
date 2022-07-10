@@ -10,6 +10,7 @@ import NavBar from "../helpers/navBar/NavBar";
 import { BooksScreen } from "../pages/books/BooksScreen";
 import { CharactersScreen } from "../pages/characters/CharactersScreen";
 import { LoginScreen } from "../pages/login/LoginScreen";
+import { WorksScreen } from "../pages/works/WorksScreen";
 
 export const AftRouter = () => (
   <Router>
@@ -18,6 +19,7 @@ export const AftRouter = () => (
       <Route path="/books" element={<BooksScreen />} />
       <Route path="/characters/book/:bookId" element={<CharactersScreen />} />
       <Route path="/login" element={<LoginScreen />} />
+      <Route path="/works" element={<WorksScreen />} />
 
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>

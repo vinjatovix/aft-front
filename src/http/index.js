@@ -70,6 +70,20 @@ const fetchCharactersByBookId = async (token, id) =>
     }
   );
 
+const fetchWorks = async (token) =>
+  fetcher(api.work.getAll.path, api.work.getAll.method, { token });
+
+const fetchWorkById = async (token, id) =>
+  fetcher(api.work.getById.path.replace(":id", id), api.work.getById.method, {
+    token,
+  });
+
+const fetchAddWork = async (token, body) =>
+  fetcher(api.work.addWork.path, api.work.addWork.method, {
+    token,
+    body,
+  });
+
 module.exports = {
   fetchLogin,
   fetchUpdatePassword,
@@ -79,4 +93,7 @@ module.exports = {
   fetchDeleteBook,
   fetchUpdateBook,
   fetchCharactersByBookId,
+  fetchWorks,
+  fetchWorkById,
+  fetchAddWork,
 };

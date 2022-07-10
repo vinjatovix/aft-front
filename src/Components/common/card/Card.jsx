@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { UserCard } from "./UserCard";
 import { BookCard } from "./BookCard";
+import { WorkCard } from "./WorkCard";
 
 const Card = ({ data, type, actions, isAdmin, token }) => {
   return (
@@ -10,6 +11,15 @@ const Card = ({ data, type, actions, isAdmin, token }) => {
 
       {type === "book" && (
         <BookCard
+          data={data}
+          isAdmin={isAdmin}
+          actions={actions}
+          token={token}
+        />
+      )}
+
+      {type === "work" && (
+        <WorkCard
           data={data}
           isAdmin={isAdmin}
           actions={actions}
