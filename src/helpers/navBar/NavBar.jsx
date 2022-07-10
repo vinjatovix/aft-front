@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import { checkToken } from "./checkToken";
-import "./navBar.css";
 
 const NavBar = () => {
   const {

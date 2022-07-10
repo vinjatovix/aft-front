@@ -12,7 +12,7 @@ const UserPanel = ({ user, handleLogOut }) => {
   const isAdmin = user.user.roles.includes("aft.admin");
   return (
     <>
-      <div className={modals.password ? "blur" : ""}>
+      <div data-testid="user-panel" className={modals.password ? "blur" : ""}>
         <div className="user-dashboard">
           <Card type="user" data={user.user} />
 
