@@ -12,6 +12,7 @@ export const BookForm = ({
         <input
           className="form-control"
           type="text"
+          data-testid="name"
           id="name"
           name="name"
           value={formState.name}
@@ -24,6 +25,7 @@ export const BookForm = ({
         <input
           className="form-control"
           type="text"
+          data-testid="author"
           id="author"
           name="author"
           value={formState.author}
@@ -35,6 +37,7 @@ export const BookForm = ({
         <input
           className="form-control"
           type="text"
+          data-testid="img"
           id="img"
           name="img"
           value={formState.img}
@@ -46,6 +49,7 @@ export const BookForm = ({
         <input
           className="form-control"
           type="text"
+          data-testid="description"
           id="description"
           name="description"
           value={formState.description}
@@ -56,7 +60,11 @@ export const BookForm = ({
       <button type="submit" className="bg-green">
         Enviar
       </button>
-      {message && <p className={message.type}>{message.text}</p>}
+      {message && (
+        <p data-testid="message" className={message.type}>
+          {message.text}
+        </p>
+      )}
     </form>
   );
 };
