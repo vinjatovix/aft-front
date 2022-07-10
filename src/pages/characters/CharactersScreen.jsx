@@ -7,7 +7,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { useModals } from "../../hooks/useModals";
 import { fetchBookById, fetchCharactersByBookId } from "../../http";
 import { CharacterDetail } from "./CharacterDetail";
-import { CharactersContent } from "./ChatactersContent";
+import { CharactersContent } from "./CharactersContent";
 
 export const CharactersScreen = () => {
   const { auth } = useContext(UserContext);

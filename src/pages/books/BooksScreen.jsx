@@ -1,16 +1,15 @@
 import React, { useContext, useEffect } from "react";
-import { useModals } from "../../hooks/useModals";
-
 import { Content } from "../../Components/common/Content";
 import { CardGrid } from "../../Components/common/CardGrid";
+import { Modal } from "../../Components/common/modals/Modal";
+import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
+import { useModals } from "../../hooks/useModals";
 
+import { useCanvas } from "../../hooks/useCanvas";
 import { fetchBooks, fetchDeleteBook } from "../../http";
 import { UserContext } from "../../contexts/UserContext";
-import { useCanvas } from "../../hooks/useCanvas";
-import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
-import { Modal } from "../../Components/common/modals/Modal";
-import { BookDetail } from "./BookDetail.";
-import EditBookForm from "./EditBookForms";
+import { BookDetail } from "./BookDetail";
+import EditBookForm from "./EditBookForm";
 
 export const BooksScreen = () => {
   const { auth } = useContext(UserContext);
