@@ -6,7 +6,7 @@ import {
   Routes,
 } from "react-router-dom";
 
-import NavBar from "../helpers/navBar/NavBar";
+import NavBar from "../Components/ui/navBar/NavBar";
 import { BooksScreen } from "../pages/books/BooksScreen";
 import { CharactersScreen } from "../pages/characters/CharactersScreen";
 import { HomeScreen } from "../pages/home/HomeScreen";
