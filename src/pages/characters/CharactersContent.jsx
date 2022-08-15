@@ -36,7 +36,7 @@ export const CharactersContent = ({
               </p>
               {isAdmin && (
                 <>
-                  <div className="control-panel-mini d-row">
+                  <div className="control-panel-mini row">
                     <button
                       className="bg-yellow"
                       onClick={() => {
