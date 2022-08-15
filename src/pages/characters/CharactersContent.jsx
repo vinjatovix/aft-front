@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ListItem } from "../../Components/common/ListItem";
 
 export const CharactersContent = ({
-  data: { book, bookCharacters },
+  data: { book, charactersList },
   isAdmin,
   actions,
   token,
@@ -24,15 +24,19 @@ export const CharactersContent = ({
       <p>{book.description}</p>
       <h2>Personajes</h2>
       <ul className="characters-list">
-        {bookCharacters.map((character) => (
+        {charactersList.map((character) => (
           <ListItem
             key={character._id}
             className="characters-list_item"
             {...character}
           >
             <>
-              <p>
-                {character.name}: {character.description}.{character.center}
+              <p
+                onClick={() => {
+                  actions.setDataDetail(character);
+                }}
+              >
+                {character.name}: {character.description}. {character.center}
               </p>
               {isAdmin && (
                 <>
@@ -40,6 +44,7 @@ export const CharactersContent = ({
                     <button
                       className="bg-yellow"
                       onClick={() => {
+                        actions.setDataDetail(character);
                         actions.edit();
                       }}
                     >
@@ -48,6 +53,7 @@ export const CharactersContent = ({
                     <button
                       className="bg-red"
                       onClick={() => {
+                        actions.setDataDetail(character);
                         actions.delete(token, character._id);
                       }}
                     >
@@ -72,10 +78,10 @@ CharactersContent.propTypes = {
       img: PropTypes.string,
       description: PropTypes.string,
     }).isRequired,
-    bookCharacters: PropTypes.array,
+    charactersList: PropTypes.array,
   }).isRequired,
 };
 
 CharactersContent.defaultProps = {
-  bookCharacters: [],
+  charactersList: [],
 };

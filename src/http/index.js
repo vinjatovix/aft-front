@@ -84,6 +84,31 @@ const fetchCharactersByBookId = async (token, id) =>
     }
   );
 
+const fetchAddCharacter = async (token, body) =>
+  fetcher(api.character.addCharacter.path, api.character.addCharacter.method, {
+    token,
+    body,
+  });
+
+const fetchUpdateCharacter = async (token, id, body) =>
+  fetcher(
+    api.character.updateCharacter.path.replace(":id", id),
+    api.character.updateCharacter.method,
+    {
+      token,
+      body,
+    }
+  );
+
+const fetchDeleteCharacter = async (token, id) =>
+  fetcher(
+    api.character.deleteCharacter.path.replace(":id", id),
+    api.character.deleteCharacter.method,
+    {
+      token,
+    }
+  );
+
 const fetchUsers = async (token) =>
   fetcher(api.user.getAll.path, api.user.getAll.method, { token });
 
@@ -99,5 +124,8 @@ module.exports = {
   fetchDeleteBook,
   fetchUpdateBook,
   fetchCharactersByBookId,
+  fetchAddCharacter,
+  fetchUpdateCharacter,
+  fetchDeleteCharacter,
   fetchUsers,
 };
