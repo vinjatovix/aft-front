@@ -1,6 +1,6 @@
-const { api } = require("./api");
+import { api } from "./api";
 
-const fetcher = async (path, method, { body, token, version = "v1" }) =>
+export const fetcher = async (path, method, { body, token, version = "v1" }) =>
   fetch(`${api.host}${version}${path}`, {
     method,
     headers: {
@@ -10,15 +10,15 @@ const fetcher = async (path, method, { body, token, version = "v1" }) =>
     ...(body ? { body: _pack(body) } : {}),
   });
 
-const _pack = (body) =>
+export const _pack = (body) =>
   typeof body === "string" ? body : JSON.stringify(body);
 
-const fetchLogin = async (body) =>
+export const fetchLogin = async (body) =>
   fetcher(api.authentication.login.path, api.authentication.login.method, {
     body,
   });
 
-const fetchUpdatePassword = async (token, body) =>
+export const fetchUpdatePassword = async (token, body) =>
   fetcher(
     api.authentication.updatePassword.path,
     api.authentication.updatePassword.method,
@@ -28,35 +28,35 @@ const fetchUpdatePassword = async (token, body) =>
     }
   );
 
-const fetchWorks = async (token) =>
+export const fetchWorks = async (token) =>
   fetcher(api.work.getAll.path, api.work.getAll.method, { token });
 
-const fetchWorkById = async (token, id) =>
+export const fetchWorkById = async (token, id) =>
   fetcher(api.work.getById.path.replace(":id", id), api.work.getById.method, {
     token,
   });
 
-const fetchAddWork = async (token, body) =>
+export const fetchAddWork = async (token, body) =>
   fetcher(api.work.addWork.path, api.work.addWork.method, {
     token,
     body,
   });
 
-const fetchBooks = async (token) =>
+export const fetchBooks = async (token) =>
   fetcher(api.book.getAll.path, api.book.getAll.method, { token });
 
-const fetchBookById = async (token, id) =>
+export const fetchBookById = async (token, id) =>
   fetcher(api.book.getById.path.replace(":id", id), api.book.getById.method, {
     token,
   });
 
-const fetchAddBook = async (token, body) =>
+export const fetchAddBook = async (token, body) =>
   fetcher(api.book.addBook.path, api.book.addBook.method, {
     token,
     body,
   });
 
-const fetchDeleteBook = async (token, id) =>
+export const fetchDeleteBook = async (token, id) =>
   fetcher(
     api.book.deleteBook.path.replace(":id", id),
     api.book.deleteBook.method,
@@ -65,7 +65,7 @@ const fetchDeleteBook = async (token, id) =>
     }
   );
 
-const fetchUpdateBook = async (token, id, body) =>
+export const fetchUpdateBook = async (token, id, body) =>
   fetcher(
     api.book.updateBook.path.replace(":id", id),
     api.book.updateBook.method,
@@ -75,7 +75,7 @@ const fetchUpdateBook = async (token, id, body) =>
     }
   );
 
-const fetchCharactersByBookId = async (token, id) =>
+export const fetchCharactersByBookId = async (token, id) =>
   fetcher(
     api.character.getByBookId.path.replace(":id", id),
     api.character.getByBookId.method,
@@ -84,13 +84,13 @@ const fetchCharactersByBookId = async (token, id) =>
     }
   );
 
-const fetchAddCharacter = async (token, body) =>
+export const fetchAddCharacter = async (token, body) =>
   fetcher(api.character.addCharacter.path, api.character.addCharacter.method, {
     token,
     body,
   });
 
-const fetchUpdateCharacter = async (token, id, body) =>
+export const fetchUpdateCharacter = async (token, id, body) =>
   fetcher(
     api.character.updateCharacter.path.replace(":id", id),
     api.character.updateCharacter.method,
@@ -100,7 +100,7 @@ const fetchUpdateCharacter = async (token, id, body) =>
     }
   );
 
-const fetchDeleteCharacter = async (token, id) =>
+export const fetchDeleteCharacter = async (token, id) =>
   fetcher(
     api.character.deleteCharacter.path.replace(":id", id),
     api.character.deleteCharacter.method,
@@ -109,23 +109,5 @@ const fetchDeleteCharacter = async (token, id) =>
     }
   );
 
-const fetchUsers = async (token) =>
+export const fetchUsers = async (token) =>
   fetcher(api.user.getAll.path, api.user.getAll.method, { token });
-
-module.exports = {
-  fetchLogin,
-  fetchUpdatePassword,
-  fetchWorks,
-  fetchWorkById,
-  fetchAddWork,
-  fetchBooks,
-  fetchBookById,
-  fetchAddBook,
-  fetchDeleteBook,
-  fetchUpdateBook,
-  fetchCharactersByBookId,
-  fetchAddCharacter,
-  fetchUpdateCharacter,
-  fetchDeleteCharacter,
-  fetchUsers,
-};
