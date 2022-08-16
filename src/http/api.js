@@ -68,7 +68,7 @@ const api = {
       method: "PATCH",
     },
     getByBookId: {
-      path: '/character?filter["book._id"]=:id',
+      path: "/character/book/:id",
       method: "GET",
     },
   },
