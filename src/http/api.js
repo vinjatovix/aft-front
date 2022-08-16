@@ -1,5 +1,5 @@
 const api = {
-  host: "http://localhost:5000/api/",
+  host: "https://aft-back.herokuapp.com/api/",
   authentication: {
     login: {
       path: "/authentication/login",
@@ -68,7 +68,7 @@ const api = {
       method: "PATCH",
     },
     getByBookId: {
-      path: "/character/book/:id",
+      path: "/character?filter[book]=:id",
       method: "GET",
     },
   },
