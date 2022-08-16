@@ -1,4 +1,4 @@
-const api = {
+export const api = {
   host: "https://aft-back.herokuapp.com/api/",
   authentication: {
     login: {
@@ -83,5 +83,3 @@ const api = {
     },
   },
 };
-
-exports.api = api;
