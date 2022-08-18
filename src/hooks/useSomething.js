@@ -13,6 +13,7 @@ export const useSomething = (aim, call) => {
         loading: false,
       });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [aim]);
 
   return state;
