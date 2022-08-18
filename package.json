@@ -23,8 +23,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest --watchAll",
-    "test:ci": "jest --ci --reporters='default' --reporters='./github-actions-reporter'",
+    "test": "jest -c jest.config.js --forceExit",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest -c jest.config.js --coverage --forceExit",
+    "test:ci": "jest --ci --forceExit --reporters='default' --reporters='./github-actions-reporter'",
     "eject": "react-scripts eject"
   },
   "husky": {
