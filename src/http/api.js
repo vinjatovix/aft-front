@@ -1,5 +1,7 @@
+import { getApiHost } from "../helpers/getApiHost";
+
 export const api = {
-  host: "https://aft-back.herokuapp.com/api/",
+  host: getApiHost(),
   authentication: {
     login: {
       path: "/authentication/login",

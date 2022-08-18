@@ -4,6 +4,10 @@ import { UserProvider } from "../../src/providers/UserProvider";
 import { AftRouter } from "../../src/routers/AftRouter";
 import getUserContext from "../fixtures/getUserContext";
 
+jest.mock("../../src/helpers/getApiHost", () => ({
+  getApiHost: jest.fn().mockReturnValue("host"),
+}));
+
 describe("AftRouter Component", () => {
   it("should show 2 links on navBar if no authenticated", async () => {
     render(
