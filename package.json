@@ -1,6 +1,6 @@
 {
   "name": "aft-front",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "engines": {
     "node": "12.22.12",
@@ -42,7 +42,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,json}": [
+    "src/**/*.{js,json,jsx}": [
       "prettier --write",
       "npm run lint --max-warnings=0"
     ]
