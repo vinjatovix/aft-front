@@ -20,6 +20,11 @@ export const WorksScreen = () => {
     auth.token && getWorks();
   }, [auth.token]);
 
+  const loggedWorks = roles.includes("aft.user") ? (
+    <WorksByUser data={works} username={username} />
+  ) : (
+    <h1>LOGOUT</h1>
+  );
   return (
     (auth && (
       <>
@@ -29,10 +34,8 @@ export const WorksScreen = () => {
               <Card type="work" key={item._id} data={item} />
             ))}
           </div>
-        ) : roles.includes("aft.user") ? (
-          <WorksByUser data={works} username={username} />
         ) : (
-          <h1>LOGOUT</h1>
+          loggedWorks
         )}
       </>
     )) || <></>
