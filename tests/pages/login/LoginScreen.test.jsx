@@ -3,6 +3,10 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { UserContext } from "../../../src/contexts/UserContext";
 import { LoginScreen } from "../../../src/pages/login/LoginScreen";
 
+jest.mock("../../../src/helpers/getApiHost", () => ({
+  getApiHost: jest.fn().mockReturnValue("host"),
+}));
+
 describe("LoginScreen Component", () => {
   it("should render login form if no authenticated", () => {
     render(
