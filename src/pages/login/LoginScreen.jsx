@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useForm } from "../../hooks/useForm";
 
@@ -49,7 +49,7 @@ export const LoginScreen = () => {
       {auth && auth.user && (
         <UserPanel user={auth} handleLogOut={handleLogOut} />
       )}
-      
+
       {(!auth || !auth.user) && (
         <LoginForm
           formState={formState}
