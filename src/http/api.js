@@ -14,7 +14,7 @@ export const api = {
   },
   work: {
     getAll: {
-      path: "/work",
+      path: "/work?include=character,scene",
       method: "GET",
     },
     getById: {
