@@ -7,13 +7,13 @@ export const WorkCard = ({ data }) => {
     <ul className="work-list">
       <ListItem
         name="Intérprete"
-        children={<p>by: {data.student.name}</p>}
-        liKey={data.student._id}
+        children={<p>by: {data.metadata.createdBy}</p>}
+        liKey={data.metadata.createdBy}
       />
       <ListItem
         name="Obra"
-        children={<p>Obra: {data.book.name}</p>}
-        liKey={data.book._id}
+        children={<p>Obra: {data.character.book.name}</p>}
+        liKey={data.character.book._id}
       />
       <ListItem
         name="Personaje"
@@ -32,7 +32,6 @@ export const WorkCard = ({ data }) => {
     </ul>
   );
 };
-
 WorkCard.propTypes = {
   data: PropTypes.object.isRequired,
 };
