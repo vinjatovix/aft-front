@@ -32,9 +32,20 @@ exports[`BookCard Component should match snapshot 1`] = `
     >
       <button
         class="bg-blue"
-        data-testid="char-button"
+        data-testid="navigate-button"
       >
         🎭 Personajes
+      </button>
+    </a>
+    <a
+      class=""
+      href="/scenes/book/5e9f8f8f8f8f8f8f8f8f8f8"
+    >
+      <button
+        class="bg-blue"
+        data-testid="navigate-button"
+      >
+        🎬 Escenas
       </button>
     </a>
     <div

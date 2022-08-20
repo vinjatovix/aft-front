@@ -111,3 +111,47 @@ export const fetchDeleteCharacter = async (token, id) =>
 
 export const fetchUsers = async (token) =>
   fetcher(api.user.getAll.path, api.user.getAll.method, { token });
+
+export const fetchAddScene = async (token, body) =>
+  fetcher(api.scene.addScene.path, api.scene.addScene.method, {
+    token,
+    body,
+  });
+
+export const fetchUpdateScene = async (token, id, body) =>
+  fetcher(
+    api.scene.updateScene.path.replace(":id", id),
+    api.scene.updateScene.method,
+    {
+      token,
+      body,
+    }
+  );
+
+export const fetchDeleteScene = async (token, id) =>
+  fetcher(
+    api.scene.deleteScene.path.replace(":id", id),
+    api.scene.deleteScene.method,
+    {
+      token,
+    }
+  );
+
+export const fetchScenesByBookId = async (token, id) =>
+  fetcher(
+    api.scene.getByBookId.path.replace(":id", id),
+    api.scene.getByBookId.method,
+    {
+      token,
+    }
+  );
+
+export const fetchScenes = async (token) =>
+  fetcher(api.scene.getAll.path, api.scene.getAll.method, {
+    token,
+  });
+
+export const fetchSceneById = async (token, id) =>
+  fetcher(api.scene.getById.path.replace(":id", id), api.scene.getById.method, {
+    token,
+  });

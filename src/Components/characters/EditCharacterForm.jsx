@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { BookForm } from "./BookForm";
+import { CharacterForm } from "./CharacterForm";
 import { useForm } from "../../hooks/useForm";
-import { fetchAddBook, fetchUpdateBook } from "../../http";
+import { fetchAddCharacter, fetchUpdateCharacter } from "../../http";
 import { resetMessage } from "../../helpers/resetMessage";
 
-const EditBookForm = ({ auth, data, actions }) => {
-  const successText = data ? "Obra actualizada" : "Obra añadida";
+const EditCharacterForm = ({ auth, data, actions }) => {
+  const successText = data ? "Personaje actualizado" : "Personaje añadido";
   const initMessage = { type: null, text: null };
   const [message, setMessage] = useState(initMessage);
   const [formState, handleChange, resetForm] = useForm(data ? { ...data } : {});
 
   const submit = async () => {
-    const res = data
-      ? await fetchUpdateBook(auth.token, data._id, formState)
-      : await fetchAddBook(auth.token, formState);
+    const res = data.name
+      ? await fetchUpdateCharacter(auth.token, data._id, formState)
+      : await fetchAddCharacter(auth.token, formState);
 
     if (res.ok) {
       setMessage({
@@ -36,7 +36,7 @@ const EditBookForm = ({ auth, data, actions }) => {
   };
 
   return (
-    <BookForm
+    <CharacterForm
       formState={formState}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
@@ -45,13 +45,22 @@ const EditBookForm = ({ auth, data, actions }) => {
   );
 };
 
-EditBookForm.propTypes = {
+EditCharacterForm.propTypes = {
   auth: PropTypes.object.isRequired,
   data: PropTypes.object,
+  actions: PropTypes.shape({
+    setDataDetail: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+    edit: PropTypes.func.isRequired,
+    detail: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-EditBookForm.defaultProps = {
+EditCharacterForm.defaultProps = {
   data: null,
 };
 
-export default EditBookForm;
+export default EditCharacterForm;

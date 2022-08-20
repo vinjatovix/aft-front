@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const BookForm = ({
   handleSubmit,
@@ -67,4 +68,23 @@ export const BookForm = ({
       )}
     </form>
   );
+};
+
+BookForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  formState: PropTypes.shape({
+    name: PropTypes.string,
+    author: PropTypes.string,
+    img: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+  message: PropTypes.shape({
+    text: PropTypes.string,
+    type: PropTypes.string,
+  }),
+};
+
+BookForm.defaultProps = {
+  message: null,
 };

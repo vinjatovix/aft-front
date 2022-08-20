@@ -376,12 +376,12 @@ select {
   justify-content: flex-end;
 }
 
-.characters-list_item:hover {
+.content-list_item:hover {
   background-color: var(--blue-gray);
   cursor: pointer;
 }
 
-.characters-list_item {
+.content-list_item {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

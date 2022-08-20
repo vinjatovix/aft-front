@@ -4,17 +4,17 @@ import ChangePasswordForm from "./ChangePasswordForm";
 import { NavLink } from "react-router-dom";
 import Card from "../../Components/common/card/Card";
 
-const UserPanel = ({ user, handleLogOut }) => {
+const UserPanel = ({ auth, handleLogOut }) => {
   const [modals, setModals] = useState({
     password: false,
     blur: false,
   });
-  const isAdmin = user.user.roles.includes("aft.admin");
+  const isAdmin = auth.user.roles.includes("aft.admin");
   return (
     <>
       <div data-testid="user-panel" className={modals.password ? "blur" : ""}>
         <div className="user-dashboard">
-          <Card type="user" data={user.user} />
+          <Card type="user" data={auth.user} />
 
           <button className="action-button bg-yellow" onClick={handleLogOut}>
             Logout
@@ -60,7 +60,7 @@ const UserPanel = ({ user, handleLogOut }) => {
               </span>
             </div>
             <div className="modal-body">
-              <ChangePasswordForm user={user} />
+              <ChangePasswordForm user={auth.user} />
             </div>
           </div>
         </div>
@@ -70,7 +70,12 @@ const UserPanel = ({ user, handleLogOut }) => {
 };
 
 UserPanel.propTypes = {
-  user: PropTypes.object.isRequired,
+  auth: PropTypes.shape({
+    user: PropTypes.shape({
+      roles: PropTypes.arrayOf(PropTypes.string),
+      username: PropTypes.string,
+    }),
+  }).isRequired,
   handleLogOut: PropTypes.func.isRequired,
 };
 

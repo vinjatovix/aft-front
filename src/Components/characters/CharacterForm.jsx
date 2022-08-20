@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const CharacterForm = ({
   handleSubmit,
@@ -84,4 +85,16 @@ export const CharacterForm = ({
       )}
     </form>
   );
+};
+
+CharacterForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  formState: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    center: PropTypes.string,
+    gender: PropTypes.string,
+  }).isRequired,
+  message: PropTypes.object,
 };

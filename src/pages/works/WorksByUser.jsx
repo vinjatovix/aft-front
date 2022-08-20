@@ -16,6 +16,6 @@ export const WorksByUser = ({ data, username }) => {
 };
 
 WorksByUser.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   username: PropTypes.string.isRequired,
 };

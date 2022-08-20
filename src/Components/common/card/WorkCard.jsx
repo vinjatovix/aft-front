@@ -32,6 +32,21 @@ export const WorkCard = ({ data }) => {
     </ul>
   );
 };
+
 WorkCard.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    metadata: PropTypes.shape({
+      createdBy: PropTypes.string.isRequired,
+    }).isRequired,
+    character: PropTypes.shape({
+      book: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    scene: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
 };

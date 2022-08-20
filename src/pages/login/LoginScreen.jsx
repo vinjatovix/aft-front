@@ -2,16 +2,17 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useForm } from "../../hooks/useForm";
 
-import { LoginForm } from "./LoginForm";
 import { fetchLogin } from "../../http";
-import UserPanel from "./UserPanel";
 import { resetMessage } from "../../helpers/resetMessage";
+import { LoginForm } from "../../Components/login/LoginForm";
+import UserPanel from "../../Components/login/UserPanel";
+
+const INIT_MESSAGE = { type: null, text: null };
 
 export const LoginScreen = () => {
   const { auth, setAuth } = useContext(UserContext);
+  const [responseMessage, setResponseMessage] = useState(INIT_MESSAGE);
 
-  const initMessage = { type: null, text: null };
-  const [responseMessage, setResponseMessage] = useState(initMessage);
   const [formState, handleChange, resetForm] = useForm({
     username: "",
     password: "",
@@ -28,7 +29,7 @@ export const LoginScreen = () => {
     } else {
       const error = await res.json();
       setResponseMessage({ type: "error", text: error.id });
-      resetMessage(setResponseMessage, initMessage, resetForm);
+      resetMessage(setResponseMessage, INIT_MESSAGE, resetForm);
       resetForm();
     }
   };
@@ -43,11 +44,10 @@ export const LoginScreen = () => {
     setAuth({});
   };
 
-  console.log(auth);
   return (
     <>
       {auth && auth.user && (
-        <UserPanel user={auth} handleLogOut={handleLogOut} />
+        <UserPanel auth={auth} handleLogOut={handleLogOut} />
       )}
 
       {(!auth || !auth.user) && (

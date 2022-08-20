@@ -21,9 +21,13 @@ describe("BookCard Component", () => {
   };
 
   const actions = {
-    detail: jest.fn(),
-    edit: jest.fn(),
+    setDataDetail: jest.fn(),
+    add: jest.fn(),
+    close: jest.fn(),
     delete: jest.fn(),
+    edit: jest.fn(),
+    detail: jest.fn(),
+    refresh: jest.fn(),
   };
 
   it("should match snapshot", async () => {
@@ -48,7 +52,7 @@ describe("BookCard Component", () => {
     expect(li.innerHTML).toContain(data.author);
   });
 
-  it("should show only characters button (non admin card)", async () => {
+  it("should show only characters and scenes buttons (non admin card)", async () => {
     render(
       <Router>
         <BookCard data={data} isAdmin={false} actions={actions} token="token" />
@@ -56,7 +60,7 @@ describe("BookCard Component", () => {
     );
     const buttons = screen.getAllByRole("button");
 
-    expect(buttons.length).toBe(1);
+    expect(buttons.length).toBe(2);
   });
 
   it("should navigate to characters when character button is clicked", async () => {
@@ -90,13 +94,13 @@ describe("BookCard Component", () => {
       </UserContext.Provider>
     );
 
-    const button = screen.getByTestId("char-button");
-    fireEvent.click(button);
+    const button = screen.getAllByTestId("navigate-button");
+    fireEvent.click(button[0]);
 
     expect(screen.getByText("CharactersScreen")).toBeTruthy();
   });
 
-  it("should show characters, edit and delete buttons (admin card)", async () => {
+  it("should show characters, scenes, edit and delete buttons (admin card)", async () => {
     render(
       <Router>
         <BookCard data={data} isAdmin={true} actions={actions} token="token" />
@@ -105,15 +109,17 @@ describe("BookCard Component", () => {
     const buttons = screen.getAllByRole("button");
     const editButton = screen.getByTestId("edit-button");
     const deleteButton = screen.getByTestId("delete-button");
-    const charactersButton = screen.getByTestId("char-button");
+    const navigateButtons = screen.getAllByTestId("navigate-button");
 
-    expect(buttons.length).toBe(3);
+    expect(buttons.length).toBe(4);
     expect(editButton).toBeTruthy();
     expect(editButton.innerHTML).toBe("📝 editar");
     expect(deleteButton).toBeTruthy();
     expect(deleteButton.innerHTML).toBe("🗑️ eliminar");
-    expect(charactersButton).toBeTruthy();
-    expect(charactersButton.innerHTML).toBe("🎭 Personajes");
+    expect(navigateButtons[0]).toBeTruthy();
+    expect(navigateButtons[0].innerHTML).toBe("🎭 Personajes");
+    expect(navigateButtons[1]).toBeTruthy();
+    expect(navigateButtons[1].innerHTML).toBe("🎬 Escenas");
   });
 
   it("should call actions.edit when button is clicked", async () => {

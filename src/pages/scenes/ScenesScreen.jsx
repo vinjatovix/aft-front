@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { NavLink } from "react-router-dom";
-import { CharacterDetail } from "../../Components/characters/CharacterDetail";
-import EditCharacterForm from "../../Components/characters/EditCharacterForm";
 import { Content } from "../../Components/common/content/Content";
-import { ContentBody } from "../../Components/common/content/ContentBody";
-import { ContentHeader } from "../../Components/common/content/ContentHeader";
 import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
 import { Modal } from "../../Components/common/modals/Modal";
-import { NavigateButton } from "../../Components/ui/buttons/NavigateButton";
-import { deleteCharacter } from "../../helpers/deleteCharacter";
-import { getBook } from "../../helpers/getBook";
-import { getCharacters } from "../../helpers/getCharacters";
+import EditSceneForm from "../../Components/scenes/EditSceneForm";
 
-export const CharactersScreen = ({
+import { getBook } from "../../helpers/getBook";
+import { getScenes } from "../../helpers/getScenes";
+import { deleteScene } from "../../helpers/deleteScene";
+import { ContentHeader } from "../../Components/common/content/ContentHeader";
+import { NavigateButton } from "../../Components/ui/buttons/NavigateButton";
+import { ContentBody } from "../../Components/common/content/ContentBody";
+import { SceneDetail } from "../../Components/scenes/SceneDetail";
+
+export const ScenesScreen = ({
   auth,
   params,
   dispatchEntity,
@@ -27,9 +28,9 @@ export const CharactersScreen = ({
 
   const _getBook = getBook(auth, params, setBook);
 
-  const _getData = getCharacters(auth, params, dispatchEntity.setCanvas);
+  const _getData = getScenes(auth, params, dispatchEntity.setCanvas);
 
-  const _deleteInstance = deleteCharacter(
+  const _deleteInstance = deleteScene(
     modalActions.close,
     dispatchEntity.setUpdate
   );
@@ -42,18 +43,18 @@ export const CharactersScreen = ({
   return book ? (
     <>
       <Content modals={modals} modalActions={modalActions} isAdmin={isAdmin}>
-        <NavLink to={`/scenes/book/${book._id}`}>
-          <NavigateButton text="🎬 Escenas" />
+        <NavLink to={`/characters/book/${book._id}`}>
+          <NavigateButton text="🎭 Personajes" />
         </NavLink>
 
         <ContentHeader
           book={book}
-          title="Personajes:"
+          title="Escenas:"
           count={dispatchEntity.count}
         />
 
         <ContentBody
-          type="character"
+          type="scene"
           content={Entity.data}
           isAdmin={isAdmin}
           actions={modalActions}
@@ -63,24 +64,21 @@ export const CharactersScreen = ({
 
       {modals.blur && (
         <Modal actions={{ close: modalActions.close }}>
-          {modals.detail && <CharacterDetail auth={auth} data={modals.data} />}
-
+          {modals.detail && <SceneDetail auth={auth} data={modals.data} />}
           {modals.edit && (
-            <EditCharacterForm
+            <EditSceneForm
               auth={auth}
               data={modals.data}
               actions={modalActions}
             />
           )}
-
           {modals.add && (
-            <EditCharacterForm
+            <EditSceneForm
               auth={auth}
               actions={modalActions}
               data={{ book: book._id }}
             />
           )}
-
           {modals.delete && (
             <ConfirmModal
               auth={auth}
@@ -98,7 +96,7 @@ export const CharactersScreen = ({
   );
 };
 
-CharactersScreen.propTypes = {
+ScenesScreen.propTypes = {
   auth: PropTypes.object.isRequired,
   params: PropTypes.object.isRequired,
   dispatchEntity: PropTypes.object.isRequired,
@@ -116,6 +114,16 @@ CharactersScreen.propTypes = {
   isAdmin: PropTypes.bool,
 };
 
-CharactersScreen.defaultProps = {
+ScenesScreen.defaultProps = {
   isAdmin: false,
 };
+
+/*   actions: PropTypes.shape({
+    setDataDetail: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+    edit: PropTypes.func.isRequired,
+    detail: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+  }).isRequired, */

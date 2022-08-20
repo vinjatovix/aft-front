@@ -1,8 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import EditCharacterForm from "../../../src/Components/characters/EditCharacterForm";
 import { fetchUpdateCharacter } from "../../../src/http";
-import EditCharacterForm from "../../../src/pages/characters/EditCharacterForm";
 
 jest.mock("../../../src/http", () => ({
   fetchUpdateCharacter: jest.fn().mockReturnValue({ ok: true }),
@@ -19,8 +20,11 @@ const data = {
 };
 
 const actions = {
-  edit: jest.fn(),
+  setDataDetail: jest.fn(),
+  add: jest.fn(),
+  close: jest.fn(),
   delete: jest.fn(),
+  edit: jest.fn(),
   detail: jest.fn(),
   refresh: jest.fn(),
 };
@@ -33,7 +37,7 @@ describe("EditCharacterForm Component", () => {
   it("should render the form with no values", () => {
     render(
       <Router>
-        <EditCharacterForm auth={auth} />
+        <EditCharacterForm auth={auth} actions={actions} />
       </Router>
     );
 
@@ -54,7 +58,7 @@ describe("EditCharacterForm Component", () => {
     expect(buttons[0].innerHTML).toBe("Enviar");
   });
 
-  it("should update form values", () => {
+  it("should update form values", async () => {
     //? SETUP
 
     const newName = "Nuevo nombre";
@@ -97,6 +101,10 @@ describe("EditCharacterForm Component", () => {
       target: { value: newDescription },
     });
     fireEvent.click(buttons[0]);
+
+    await waitFor(() => {
+      expect(screen.getByText("Personaje actualizado")).toBeInTheDocument();
+    });
 
     //? ASSERTIONS
     expect(fetchUpdateCharacter).toBeCalledTimes(1);

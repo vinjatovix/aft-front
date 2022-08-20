@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "../../hooks/useForm";
-import { fetchUpdatePassword } from "../../http";
-import { resetMessage } from "../../helpers/resetMessage";
+import { changePassword } from "../../helpers/changePassword";
 
-const ChangePasswordForm = ({
-  user: {
-    user: { username },
-  },
-}) => {
+const ChangePasswordForm = ({ user: { username } }) => {
   const initMessage = { type: null, text: null };
   const [message, setMessage] = useState(initMessage);
   const [formState, handleChange, resetForm] = useForm({
@@ -18,21 +13,12 @@ const ChangePasswordForm = ({
     repeatNewPassword: "",
   });
 
-  const _changePassword = async () => {
-    const token = localStorage.getItem("token");
-    const res = await fetchUpdatePassword(token, formState);
-
-    if (res.ok) {
-      setMessage({
-        type: "success",
-        text: "Contraseña cambiada correctamente",
-      });
-      resetMessage(setMessage, initMessage, resetForm);
-    } else {
-      setMessage({ type: "error", text: await res.json().message });
-      resetMessage(setMessage, initMessage, resetForm);
-    }
-  };
+  const _changePassword = changePassword(
+    formState,
+    setMessage,
+    initMessage,
+    resetForm
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,7 +69,9 @@ const ChangePasswordForm = ({
 };
 
 ChangePasswordForm.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ChangePasswordForm;

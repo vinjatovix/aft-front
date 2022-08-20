@@ -1,55 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+
+import { Navigate } from "react-router-dom";
+import { Content } from "../../Components/common/content/Content";
 import { ListItem } from "../../Components/common/ListItem";
 import { Modal } from "../../Components/common/modals/Modal";
-import { UserContext } from "../../contexts/UserContext";
-import { fetchUsers } from "../../http";
+import { getUsers } from "../../helpers/getUsers";
 import { UserListItem } from "./UserListItem";
 
-export const UsersScreen = () => {
-  const { auth = {} } = useContext(UserContext);
-  const { roles = [] } = auth.user || [];
-
-  const [users, setUsers] = useState([]);
-
-  const resetAllModals = {
-    add: false,
-    detail: false,
-    edit: false,
-    blur: false,
-  };
-  const [modals, setModals] = useState(resetAllModals);
-  const modalActions = {
-    closeModal: () => setModals(resetAllModals),
-    add: () => setModals({ add: true, blur: true }),
-    detailModal: () => setModals({ detail: true, blur: true }),
-    edit: () => setModals({ edit: true, blur: true }),
-    delete: () => setModals({ delete: true, blur: true }),
-  };
-
-  const getUsers = async () => {
-    const resp = await fetchUsers(auth.token);
-    const data = await resp.json();
-    setUsers(data);
-  };
+export const UsersScreen = ({
+  auth,
+  modals,
+  modalActions,
+  isAdmin,
+  Entity: { data: users },
+  dispatchEntity,
+}) => {
+  const _getUsers = getUsers(auth, dispatchEntity.setCanvas);
 
   useEffect(() => {
-    auth.token && getUsers();
-  }, [auth.token, modals]);
+    auth.token && _getUsers();
+  }, [auth.token, _getUsers]);
 
   return (
     <>
-      {!auth.user && <h1>You must be logged in to view this page</h1>}
-
-      {auth.user && (
-        <div className={modals.blur ? "content blur" : "content"}>
-          <div className="content_header">
-            {roles.includes("aft.admin") && (
-              <button className="bg-green" onClick={modalActions.add}>
-                Añadir
-              </button>
-            )}
-          </div>
-          <h1>Usuarios: {users.length}</h1>
+      {auth.user ? (
+        <Content modals={modals} modalActions={modalActions} isAdmin={isAdmin}>
+          <h1>Usuarios: {dispatchEntity.count}</h1>
           <ul className="users-list">
             {users.map(({ _id, ...user }) => (
               <ListItem name="user" key={_id}>
@@ -57,20 +34,35 @@ export const UsersScreen = () => {
               </ListItem>
             ))}
           </ul>
-        </div>
+        </Content>
+      ) : (
+        <Navigate to="/login" />
       )}
 
       {modals.add && (
-        <Modal actions={{ close: modalActions.closeModal }}>
+        <Modal actions={{ close: modalActions.close }}>
           <h1>Add User</h1>
         </Modal>
       )}
 
       {modals.detailModal && (
-        <Modal actions={{ close: modalActions.closeModal }}>
+        <Modal actions={{ close: modalActions.close }}>
           <h1>Detail User</h1>
         </Modal>
       )}
     </>
   );
+};
+
+UsersScreen.propTypes = {
+  auth: PropTypes.object.isRequired,
+  modals: PropTypes.object.isRequired,
+  modalActions: PropTypes.object.isRequired,
+  isAdmin: PropTypes.bool,
+  Entity: PropTypes.object.isRequired,
+  dispatchEntity: PropTypes.object.isRequired,
+};
+
+UsersScreen.defaultProps = {
+  isAdmin: false,
 };

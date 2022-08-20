@@ -19,7 +19,15 @@ export const Content = ({ children, modals, modalActions, isAdmin }) => {
 Content.propTypes = {
   children: PropTypes.node.isRequired,
   modals: PropTypes.object.isRequired,
-  modalActions: PropTypes.object.isRequired,
+  modalActions: PropTypes.shape({
+    setDataDetail: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+    edit: PropTypes.func.isRequired,
+    detail: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+  }).isRequired,
   isAdmin: PropTypes.bool,
 };
 

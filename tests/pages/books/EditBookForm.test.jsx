@@ -1,8 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
+import EditBookForm from "../../../src/Components/books/EditBookForm";
 import { fetchUpdateBook } from "../../../src/http";
-import EditBookForm from "../../../src/pages/books/EditBookForm";
 
 jest.mock("../../../src/http", () => ({
   fetchUpdateBook: jest.fn().mockReturnValue({ ok: true }),
@@ -17,8 +18,11 @@ const data = {
 };
 
 const actions = {
-  edit: jest.fn(),
+  setDataDetail: jest.fn(),
+  add: jest.fn(),
+  close: jest.fn(),
   delete: jest.fn(),
+  edit: jest.fn(),
   detail: jest.fn(),
   refresh: jest.fn(),
 };
@@ -33,7 +37,7 @@ describe("EditBookForm Component", () => {
   it("should render the form with no values", () => {
     render(
       <Router>
-        <EditBookForm auth={auth} />
+        <EditBookForm auth={auth} actions={actions} />
       </Router>
     );
 
@@ -49,7 +53,7 @@ describe("EditBookForm Component", () => {
     expect(buttons[0].innerHTML).toBe("Enviar");
   });
 
-  it("should update form values", () => {
+  it("should update form values", async () => {
     //? SETUP
 
     const newName = "Nuevo nombre";
@@ -90,6 +94,10 @@ describe("EditBookForm Component", () => {
       target: { value: newDescription },
     });
     fireEvent.click(buttons[0]);
+
+    await waitFor(() => {
+      expect(screen.getByText("Obra actualizada")).toBeInTheDocument();
+    });
 
     //? ASSERTIONS
     expect(fetchUpdateBook).toBeCalledTimes(1);
