@@ -18,26 +18,21 @@ export const WorksScreen = () => {
   };
   useEffect(() => {
     auth.token && getWorks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.token]);
 
   const loggedWorks = roles.includes("aft.user") ? (
     <WorksByUser data={works} username={username} />
   ) : (
-    <h1>LOGOUT</h1>
+    <h1>LOADING</h1>
+  );
+  const editorWorks = (
+    <div className="card-grid">
+      {!!works.length &&
+        works.map((item) => <Card type="work" key={item._id} data={item} />)}
+    </div>
   );
   return (
-    (auth && (
-      <>
-        {roles.includes("aft.admin") || roles.includes("aft.editor") ? (
-          <div className="card-grid">
-            {works.map((item) => (
-              <Card type="work" key={item._id} data={item} />
-            ))}
-          </div>
-        ) : (
-          loggedWorks
-        )}
-      </>
-    )) || <></>
+    <>{auth && roles.includes("aft.editor") ? editorWorks : loggedWorks}</>
   );
 };

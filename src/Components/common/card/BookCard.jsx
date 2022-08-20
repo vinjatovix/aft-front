@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { ListItem } from "../ListItem";
+import { NavigateButton } from "../../ui/buttons/NavigateButton";
 
 export const BookCard = ({ data, isAdmin, actions, token }) => {
   const defaultCoverBook =
@@ -19,11 +20,15 @@ export const BookCard = ({ data, isAdmin, actions, token }) => {
         <ListItem name="Obra" children={data.name} />
         <ListItem name="Autor" className="small" children={data.author} />
       </ul>
+
       <NavLink to={`/characters/book/${data._id}`}>
-        <button data-testid="char-button" className="bg-blue">
-          🎭 Personajes
-        </button>
+        <NavigateButton text="🎭 Personajes" />
       </NavLink>
+
+      <NavLink to={`/scenes/book/${data._id}`}>
+        <NavigateButton text="🎬 Escenas" />
+      </NavLink>
+
       {isAdmin && (
         <div className="control-panel-mini">
           <button
@@ -55,9 +60,18 @@ BookCard.propTypes = {
     name: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     img: PropTypes.string,
+    description: PropTypes.string.isRequired,
   }).isRequired,
   isAdmin: PropTypes.bool,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.shape({
+    setDataDetail: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+    edit: PropTypes.func.isRequired,
+    detail: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+  }).isRequired,
   token: PropTypes.string.isRequired,
 };
 

@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-const { BookDetail } = require("../../../src/pages/books/BookDetail");
+import { BookDetail } from "../../../src/Components/books/BookDetail";
 
 jest.mock("../../../src/helpers/getApiHost", () => ({
   getApiHost: jest.fn().mockReturnValue("host"),

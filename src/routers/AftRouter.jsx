@@ -7,23 +7,28 @@ import {
 } from "react-router-dom";
 
 import NavBar from "../Components/ui/navBar/NavBar";
-import { BooksScreen } from "../pages/books/BooksScreen";
-import { CharactersScreen } from "../pages/characters/CharactersScreen";
-import { HomeScreen } from "../pages/home/HomeScreen";
+import { Screen } from "../pages/common/Screen";
 import { LoginScreen } from "../pages/login/LoginScreen";
-import { UsersScreen } from "../pages/users/UsersScreen";
-import { WorksScreen } from "../pages/works/WorksScreen";
 
 export const AftRouter = () => (
   <Router>
     <NavBar />
+
     <Routes>
-      <Route path="/" element={<HomeScreen />} />
-      <Route path="/books" element={<BooksScreen />} />
-      <Route path="/characters/book/:bookId" element={<CharactersScreen />} />
+      <Route path="/" element={<Screen type="home" />} />
+
+      <Route path="/books" element={<Screen type="books" />} />
+      <Route
+        path="/characters/book/:bookId"
+        element={<Screen type="characters" />}
+      />
+      <Route path="/scenes/book/:bookId" element={<Screen type="scenes" />} />
+
+      <Route path="/works" element={<Screen type="works" />} />
+
       <Route path="/login" element={<LoginScreen />} />
-      <Route path="/users" element={<UsersScreen />} />
-      <Route path="/works" element={<WorksScreen />} />
+      <Route path="/users" element={<Screen type="users" />} />
+
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   </Router>

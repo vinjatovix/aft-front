@@ -1,58 +1,41 @@
-import React, { useContext, useEffect } from "react";
-import { Content } from "../../Components/common/Content";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+
 import { CardGrid } from "../../Components/common/CardGrid";
 import { Modal } from "../../Components/common/modals/Modal";
 import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
-import { useModals } from "../../hooks/useModals";
 
-import { useCanvas } from "../../hooks/useCanvas";
-import { fetchBooks, fetchDeleteBook } from "../../http";
-import { UserContext } from "../../contexts/UserContext";
-import { BookDetail } from "./BookDetail";
-import EditBookForm from "./EditBookForm";
+import { BookDetail } from "../../Components/books/BookDetail";
+import { deleteBook } from "../../helpers/deleteBook";
+import { getBooks } from "../../helpers/getBooks";
+import EditBookForm from "../../Components/books/EditBookForm";
+import { Content } from "../../Components/common/content/Content";
+import { ContentHeader } from "../../Components/common/content/ContentHeader";
 
-export const BooksScreen = () => {
-  const { auth } = useContext(UserContext);
-  const { roles = [] } = auth.user || [];
-  const isAdmin = roles.includes("aft.admin");
+export const BooksScreen = ({
+  auth,
+  dispatchEntity,
+  modalActions,
+  modals,
+  Entity,
+  isAdmin,
+}) => {
+  const _getBooks = getBooks(auth, dispatchEntity);
 
-  const [modals, dispatchModals] = useModals();
-  const [bookList, dispatchBookList] = useCanvas();
-
-  const modalActions = {
-    ...dispatchModals,
-    refresh: () => dispatchBookList.setUpdate(),
-  };
-
-  const getBooks = async () => {
-    const res = await fetchBooks(auth.token);
-    if (res.ok) {
-      const data = await res.json();
-      dispatchBookList.setCanvas(data);
-    }
-  };
-
-  const deleteBook = async (token, _id) => {
-    const res = await fetchDeleteBook(token, _id);
-    if (res.ok) {
-      modalActions.close();
-      dispatchBookList.setUpdate();
-    }
-  };
+  const _deleteInstance = deleteBook(modalActions, dispatchEntity);
 
   useEffect(() => {
-    auth.token && getBooks();
-  }, [auth.token, bookList.updatedAt]);
+    auth.token && _getBooks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth.token, Entity.updatedAt]);
 
   return (
     <>
       <Content modals={modals} modalActions={modalActions} isAdmin={isAdmin}>
-        <h1>Obras: {dispatchBookList.count}</h1>
-        {/* <input type="text" placeholder="Buscar..." /> */}
-
+        <ContentHeader title="Obras:" count={dispatchEntity.count} />
         <CardGrid
           type="book"
-          data={bookList.data}
+          data={Entity.data}
           isAdmin={isAdmin}
           actions={modalActions}
           token={auth.token}
@@ -75,7 +58,7 @@ export const BooksScreen = () => {
               auth={auth}
               data={modals.data}
               modalActions={modalActions}
-              callback={deleteBook}
+              callback={_deleteInstance}
               message="¿Estás seguro de que quieres eliminar esta obra?"
             />
           )}
@@ -83,4 +66,25 @@ export const BooksScreen = () => {
       )}
     </>
   );
+};
+
+BooksScreen.propTypes = {
+  auth: PropTypes.object.isRequired,
+  dispatchEntity: PropTypes.object.isRequired,
+  modalActions: PropTypes.shape({
+    setDataDetail: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    close: PropTypes.func.isRequired,
+    delete: PropTypes.func.isRequired,
+    edit: PropTypes.func.isRequired,
+    detail: PropTypes.func.isRequired,
+    refresh: PropTypes.func.isRequired,
+  }).isRequired,
+  modals: PropTypes.object.isRequired,
+  Entity: PropTypes.object.isRequired,
+  isAdmin: PropTypes.bool,
+};
+
+BooksScreen.defaultProps = {
+  isAdmin: false,
 };

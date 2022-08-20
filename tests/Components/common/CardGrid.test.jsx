@@ -3,10 +3,15 @@ import { CardGrid } from "../../../src/Components/common/CardGrid";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const actions = {
-  detail: jest.fn(),
-  edit: jest.fn(),
+  setDataDetail: jest.fn(),
+  add: jest.fn(),
+  close: jest.fn(),
   delete: jest.fn(),
+  edit: jest.fn(),
+  detail: jest.fn(),
+  refresh: jest.fn(),
 };
+
 describe("CardGrid Component", () => {
   it("should render a book card grid with 3 cards", () => {
     const { container } = render(
