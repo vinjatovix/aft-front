@@ -13,9 +13,10 @@ export const UsersScreen = ({
   modals,
   modalActions,
   isAdmin,
-  Entity: { data: users },
+  Entity,
   dispatchEntity,
 }) => {
+  const { data: users } = Entity;
   const _getUsers = getUsers(auth, dispatchEntity.setCanvas);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export const UsersScreen = ({
     <>
       {auth.user ? (
         <Content modals={modals} modalActions={modalActions} isAdmin={isAdmin}>
-          <h1>Usuarios: {dispatchEntity.count}</h1>
+          <h1>Usuarios: {Entity.data.length}</h1>
           <ul className="users-list">
             {users.map(({ _id, ...user }) => (
               <ListItem name="user" key={_id}>

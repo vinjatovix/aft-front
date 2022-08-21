@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import React from "react";
@@ -39,7 +39,7 @@ describe("Content Component", () => {
           <ContentHeader
             book={books[0]}
             title="Escenas:"
-            count={dispatchEntity.count}
+            count={Entity.data.length}
           />
 
           <ContentBody
@@ -59,7 +59,6 @@ describe("Content Component", () => {
   it("should render characters content", async () => {
     const Entity = { data: characters };
 
-    const dispatchEntity = { count: 3 };
     const isAdmin = true;
     const auth = { token: "token" };
     const modals = {
@@ -81,7 +80,7 @@ describe("Content Component", () => {
           <ContentHeader
             book={books[0]}
             title="Personajes:"
-            count={dispatchEntity.count}
+            count={Entity.data.length}
           />
 
           <ContentBody
