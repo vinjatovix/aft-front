@@ -36,8 +36,7 @@ describe("ContentListDetail Component", () => {
       </Router>
     );
     expect(container).toMatchSnapshot();
-    expect(screen.getByTestId("edit-button")).toBeInTheDocument();
-    expect(screen.getByTestId("delete-button")).toBeInTheDocument();
+    expect(screen.getAllByTestId("action-button")).toHaveLength(2);
   });
 
   it("should render a scene as Non admin", async () => {
@@ -69,8 +68,7 @@ describe("ContentListDetail Component", () => {
       </Router>
     );
     expect(container).toMatchSnapshot();
-    expect(screen.queryByTestId("edit-button")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("delete-button")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("action-button")).not.toBeInTheDocument();
   });
 
   it("should render a character as admin", async () => {
@@ -102,8 +100,7 @@ describe("ContentListDetail Component", () => {
       </Router>
     );
     expect(container).toMatchSnapshot();
-    expect(screen.getByTestId("edit-button")).toBeInTheDocument();
-    expect(screen.getByTestId("delete-button")).toBeInTheDocument();
+    expect(screen.getAllByTestId("action-button")).toHaveLength(2);
   });
 
   it("should render a character as Non admin", async () => {
@@ -135,7 +132,6 @@ describe("ContentListDetail Component", () => {
       </Router>
     );
     expect(container).toMatchSnapshot();
-    expect(screen.queryByTestId("edit-button")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("delete-button")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("action-button")).not.toBeInTheDocument();
   });
 });

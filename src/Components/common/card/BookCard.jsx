@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { ListItem } from "../ListItem";
 import { NavigateButton } from "../../ui/buttons/NavigateButton";
+import { AdminButtons } from "../../ui/admin/AdminButtons";
 
 export const BookCard = ({ data, isAdmin, actions, token }) => {
   const defaultCoverBook =
@@ -29,28 +30,7 @@ export const BookCard = ({ data, isAdmin, actions, token }) => {
         <NavigateButton text="🎬 Escenas" />
       </NavLink>
 
-      {isAdmin && (
-        <div className="control-panel-mini">
-          <button
-            className="bg-yellow"
-            data-testid="edit-button"
-            onClick={() => {
-              actions.edit();
-            }}
-          >
-            📝 editar
-          </button>
-          <button
-            data-testid="delete-button"
-            className="bg-red"
-            onClick={() => {
-              actions.delete(token, data._id);
-            }}
-          >
-            🗑️ eliminar
-          </button>
-        </div>
-      )}
+      {isAdmin && <AdminButtons token={token} item={data} actions={actions} />}
     </div>
   );
 };

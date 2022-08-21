@@ -10,6 +10,7 @@ exports[`Content Component should render characters content 1`] = `
     >
       <button
         class="bg-green"
+        data-testid="action-button"
       >
         Añadir
       </button>
@@ -65,14 +66,14 @@ exports[`Content Component should render characters content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>
@@ -95,14 +96,14 @@ exports[`Content Component should render characters content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>
@@ -125,14 +126,14 @@ exports[`Content Component should render characters content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>
@@ -153,6 +154,7 @@ exports[`Content Component should render scenes content 1`] = `
     >
       <button
         class="bg-green"
+        data-testid="action-button"
       >
         Añadir
       </button>
@@ -211,14 +213,14 @@ exports[`Content Component should render scenes content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>
@@ -244,14 +246,14 @@ exports[`Content Component should render scenes content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>
@@ -277,14 +279,14 @@ exports[`Content Component should render scenes content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>
@@ -310,14 +312,14 @@ exports[`Content Component should render scenes content 1`] = `
           class="control-panel-mini row"
         >
           <button
-            class="bg-yellow"
-            data-testid="edit-button"
+            class="btn-big bg-yellow"
+            data-testid="action-button"
           >
             📝
           </button>
           <button
-            class="bg-red"
-            data-testid="delete-button"
+            class="btn-big bg-red"
+            data-testid="action-button"
           >
             🗑️
           </button>

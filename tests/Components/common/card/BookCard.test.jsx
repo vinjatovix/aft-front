@@ -97,16 +97,16 @@ describe("BookCard Component", () => {
         <BookCard data={data} isAdmin={true} actions={actions} token="token" />
       </Router>
     );
-    const buttons = screen.getAllByRole("button");
-    const editButton = screen.getByTestId("edit-button");
-    const deleteButton = screen.getByTestId("delete-button");
+    const buttons = screen.getAllByTestId("action-button");
+    const editButton = buttons[0];
+    const deleteButton = buttons[1];
     const navigateButtons = screen.getAllByTestId("navigate-button");
 
-    expect(buttons.length).toBe(4);
+    expect(buttons.length).toBe(2);
     expect(editButton).toBeTruthy();
-    expect(editButton.innerHTML).toBe("📝 editar");
+    expect(editButton.innerHTML).toBe("📝 Editar");
     expect(deleteButton).toBeTruthy();
-    expect(deleteButton.innerHTML).toBe("🗑️ eliminar");
+    expect(deleteButton.innerHTML).toBe("🗑️ Eliminar");
     expect(navigateButtons[0]).toBeTruthy();
     expect(navigateButtons[0].innerHTML).toBe("🎭 Personajes");
     expect(navigateButtons[1]).toBeTruthy();
@@ -119,9 +119,9 @@ describe("BookCard Component", () => {
         <BookCard data={data} isAdmin={true} actions={actions} token="token" />
       </Router>
     );
-    const button = screen.getByTestId("edit-button");
+    const buttons = screen.getAllByTestId("action-button");
 
-    fireEvent.click(button);
+    fireEvent.click(buttons[0]);
 
     expect(actions.edit).toHaveBeenCalled();
   });
@@ -133,8 +133,8 @@ describe("BookCard Component", () => {
       </Router>
     );
 
-    const button = screen.getByTestId("delete-button");
-    fireEvent.click(button);
+    const buttons = screen.getAllByTestId("action-button");
+    fireEvent.click(buttons[1]);
 
     expect(actions.delete).toHaveBeenCalledWith(
       "token",

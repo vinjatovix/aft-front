@@ -27,14 +27,14 @@ exports[`ContentListDetail Component should render a character as admin 1`] = `
     class="control-panel-mini row"
   >
     <button
-      class="bg-yellow"
-      data-testid="edit-button"
+      class="btn-big bg-yellow"
+      data-testid="action-button"
     >
       📝
     </button>
     <button
-      class="bg-red"
-      data-testid="delete-button"
+      class="btn-big bg-red"
+      data-testid="action-button"
     >
       🗑️
     </button>
@@ -73,14 +73,14 @@ exports[`ContentListDetail Component should render a scene as admin 1`] = `
     class="control-panel-mini row"
   >
     <button
-      class="bg-yellow"
-      data-testid="edit-button"
+      class="btn-big bg-yellow"
+      data-testid="action-button"
     >
       📝
     </button>
     <button
-      class="bg-red"
-      data-testid="delete-button"
+      class="btn-big bg-red"
+      data-testid="action-button"
     >
       🗑️
     </button>

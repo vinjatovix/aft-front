@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { ActionButton } from "../../ui/buttons/ActionButton";
 
 export const Content = ({ children, modals, modalActions, isAdmin }) => {
   return (
     <div className={modals.blur ? "content blur" : "content"}>
       <div className="content_header">
         {isAdmin && (
-          <button className="bg-green" onClick={() => modalActions.add()}>
-            Añadir
-          </button>
+          <ActionButton
+            text="Añadir"
+            type="bg-green"
+            action={modalActions.add}
+          />
         )}
       </div>
       {children}
