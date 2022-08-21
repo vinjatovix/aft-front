@@ -108,6 +108,10 @@ const work = {
     path: "/work/:id",
     method: "GET",
   },
+  getByStudent: {
+    path: "/work?filter[metadata.createdBy]=~:username&include=full-scene",
+    method: "GET",
+  },
   addWork: {
     path: "/work",
     method: "POST",
