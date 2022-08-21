@@ -35,14 +35,14 @@ exports[`ContentBody Component should render scenes content with admin buttons 1
         class="control-panel-mini row"
       >
         <button
-          class="bg-yellow"
-          data-testid="edit-button"
+          class="btn-big bg-yellow"
+          data-testid="action-button"
         >
           📝
         </button>
         <button
-          class="bg-red"
-          data-testid="delete-button"
+          class="btn-big bg-red"
+          data-testid="action-button"
         >
           🗑️
         </button>
@@ -57,14 +57,14 @@ exports[`ContentBody Component should render scenes content with admin buttons 1
         class="control-panel-mini row"
       >
         <button
-          class="bg-yellow"
-          data-testid="edit-button"
+          class="btn-big bg-yellow"
+          data-testid="action-button"
         >
           📝
         </button>
         <button
-          class="bg-red"
-          data-testid="delete-button"
+          class="btn-big bg-red"
+          data-testid="action-button"
         >
           🗑️
         </button>
