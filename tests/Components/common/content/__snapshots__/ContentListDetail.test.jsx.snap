@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentListDetail Component should render a character as Non admin 1`] = `
+<div>
+  <div>
+    <p>
+      Personaje
+      : 
+      Descripción
+      . 
+    </p>
+  </div>
+</div>
+`;
+
+exports[`ContentListDetail Component should render a character as admin 1`] = `
+<div>
+  <div>
+    <p>
+      Personaje
+      : 
+      Descripción
+      . 
+    </p>
+  </div>
+  <div
+    class="control-panel-mini row"
+  >
+    <button
+      class="bg-yellow"
+      data-testid="edit-button"
+    >
+      📝
+    </button>
+    <button
+      class="bg-red"
+      data-testid="delete-button"
+    >
+      🗑️
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ContentListDetail Component should render a scene as Non admin 1`] = `
+<div>
+  <div>
+    <p>
+      Escena
+      -
+       
+      : 
+      Descripción
+      .
+    </p>
+  </div>
+</div>
+`;
+
+exports[`ContentListDetail Component should render a scene as admin 1`] = `
+<div>
+  <div>
+    <p>
+      Escena
+      -
+       
+      : 
+      Descripción
+      .
+    </p>
+  </div>
+  <div
+    class="control-panel-mini row"
+  >
+    <button
+      class="bg-yellow"
+      data-testid="edit-button"
+    >
+      📝
+    </button>
+    <button
+      class="bg-red"
+      data-testid="delete-button"
+    >
+      🗑️
+    </button>
+  </div>
+</div>
+`;

@@ -4,7 +4,7 @@ import { getWorksByStudent } from "../../selectors/getWorksByStudent.js";
 import Card from "../../Components/common/card/Card.jsx";
 
 export const WorksByUser = ({ data, username }) => {
-  const works = getWorksByStudent(data, username);
+  const works = getWorksByStudent({ data, username });
 
   return (
     <div className="card-grid">

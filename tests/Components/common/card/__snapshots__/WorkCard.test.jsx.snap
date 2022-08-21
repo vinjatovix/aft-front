@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WorkCard Component should match snapshot 1`] = `
+<div>
+  <ul
+    class="work-list"
+  >
+    <li
+      class=""
+      data-testid="Intérprete"
+    >
+      <p>
+        by: 
+        user
+      </p>
+    </li>
+    <li
+      class=""
+      data-testid="Obra"
+    >
+      <p>
+        Obra: 
+        Obra
+      </p>
+    </li>
+    <li
+      class=""
+      data-testid="Personaje"
+    >
+      <p>
+        Personaje: 
+        Personaje
+      </p>
+    </li>
+    <li
+      class=""
+      data-testid="Escena"
+    >
+      <p>
+        Escena: 
+        Escena
+      </p>
+    </li>
+    <li
+      class=""
+      data-testid="Descripción"
+    >
+      <p>
+        Descripción: 
+        Descripción
+      </p>
+    </li>
+  </ul>
+</div>
+`;

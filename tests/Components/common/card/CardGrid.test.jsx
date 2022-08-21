@@ -1,16 +1,7 @@
 import { render } from "@testing-library/react";
-import { CardGrid } from "../../../src/Components/common/CardGrid";
 import { BrowserRouter as Router } from "react-router-dom";
-
-const actions = {
-  setDataDetail: jest.fn(),
-  add: jest.fn(),
-  close: jest.fn(),
-  delete: jest.fn(),
-  edit: jest.fn(),
-  detail: jest.fn(),
-  refresh: jest.fn(),
-};
+import { CardGrid } from "../../../../src/Components/common/card/CardGrid";
+import actions from "../../../fixtures/actions";
 
 describe("CardGrid Component", () => {
   it("should render a book card grid with 3 cards", () => {

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentHeader Component should match snapshot 1`] = `
+<div>
+  <img
+    alt="book"
+    class="portrait"
+    src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+  />
+  <h1>
+    Autor
+    -
+    Obra
+  </h1>
+  <h2>
+    Descripción
+  </h2>
+  <h3
+    data-testid="Escenas:"
+  >
+    Escenas:
+     
+    3
+  </h3>
+</div>
+`;

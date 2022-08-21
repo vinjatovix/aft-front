@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentBody Component should render characters content without admin buttons 1`] = `
+<div>
+  <ul
+    class="content-list"
+  >
+    <li
+      class="content-list_item"
+      data-testid="Agnes Kris"
+    >
+      <div />
+    </li>
+    <li
+      class="content-list_item"
+      data-testid="Agnes KROS"
+    >
+      <div />
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`ContentBody Component should render scenes content with admin buttons 1`] = `
+<div>
+  <ul
+    class="content-list"
+  >
+    <li
+      class="content-list_item"
+      data-testid="Escena"
+    >
+      <div />
+      <div
+        class="control-panel-mini row"
+      >
+        <button
+          class="bg-yellow"
+          data-testid="edit-button"
+        >
+          📝
+        </button>
+        <button
+          class="bg-red"
+          data-testid="delete-button"
+        >
+          🗑️
+        </button>
+      </div>
+    </li>
+    <li
+      class="content-list_item"
+      data-testid="Escena"
+    >
+      <div />
+      <div
+        class="control-panel-mini row"
+      >
+        <button
+          class="bg-yellow"
+          data-testid="edit-button"
+        >
+          📝
+        </button>
+        <button
+          class="bg-red"
+          data-testid="delete-button"
+        >
+          🗑️
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

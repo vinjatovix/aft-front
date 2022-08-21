@@ -31,4 +31,4 @@ const getUserContext = (role) => {
   return {};
 };
 
-module.exports = getUserContext;
+export default getUserContext;

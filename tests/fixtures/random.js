@@ -1,19 +1,11 @@
-const chance = require("chance").Chance();
+export const chance = require("chance").Chance();
 
-const arrayElement = (array = []) => chance.pickone(array);
+export const arrayElement = (array = []) => chance.pickone(array);
 
-const description = (words = 5) => chance.sentence({ words });
+export const description = (words = 5) => chance.sentence({ words });
 
-const name = () => chance.sentence().replace(/\s|\./g, "-");
+export const name = () => chance.sentence().replace(/\s|\./g, "-");
 
-const uuid = (version = 4) => chance.guid({ version });
+export const uuid = (version = 4) => chance.guid({ version });
 
-const word = (length = 10) => chance.word({ length });
-
-module.exports = {
-  arrayElement,
-  description,
-  name,
-  uuid,
-  word,
-};
+export const word = (length = 10) => chance.word({ length });

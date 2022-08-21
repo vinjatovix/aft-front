@@ -1,0 +1,65 @@
+[
+  {
+    "_id": "63018d89f3b4896137c9e3f0",
+    "book": "6301216103b6fbb712bbde7c",
+    "order": 3,
+    "name": "e - User-centric",
+    "description": "programming the card won't do anything, we need to hack the solid state AGP driver!",
+    "location": "Predovichaven",
+    "time": "Sun Oct 03 2021 03:16:19 GMT+0200 (hora de verano de Europa central)",
+    "characters": ["6301221d03b6fbb712bbde7f"],
+    "metadata": {
+      "createdAt": "2022-08-21T01:42:33.404Z",
+      "createdBy": "userdev",
+      "updatedAt": "2022-08-21T01:42:33.404Z",
+      "updatedBy": "userdev"
+    }
+  },
+  {
+    "_id": "63018d87f3b4896137c9e3ec",
+    "book": "6301216103b6fbb712bbde7c",
+    "order": 2,
+    "name": "l - Centralized",
+    "description": "If we index the circuit, we can get to the XSS matrix through the bluetooth PNG bus!",
+    "location": "Lomahaven",
+    "time": "Mon Jan 17 2022 13:41:10 GMT+0100 (hora estándar de Europa central)",
+    "characters": ["6301221d03b6fbb712bbde7f"],
+    "metadata": {
+      "createdAt": "2022-08-21T01:42:31.378Z",
+      "createdBy": "userdev",
+      "updatedAt": "2022-08-21T01:42:31.378Z",
+      "updatedBy": "userdev"
+    }
+  },
+  {
+    "_id": "63018d85f3b4896137c9e3e8",
+    "book": "6301216103b6fbb712bbde7c",
+    "order": 1,
+    "name": "y - Synergized",
+    "description": "The TCP array is down, transmit the digital bandwidth so we can reboot the HDD pixel!",
+    "location": "Aufderharbury",
+    "time": "Sat Oct 16 2021 22:26:24 GMT+0200 (hora de verano de Europa central)",
+    "characters": ["6301221d03b6fbb712bbde7f"],
+    "metadata": {
+      "createdAt": "2022-08-21T01:42:29.192Z",
+      "createdBy": "userdev",
+      "updatedAt": "2022-08-21T01:42:29.192Z",
+      "updatedBy": "userdev"
+    }
+  },
+  {
+    "_id": "63012d036fed675a4f78a3fc",
+    "book": "6301216103b6fbb712bbde7c",
+    "name": "y - Progressive",
+    "description": "Use the multi-byte HDD port, then you can compress the bluetooth matrix!",
+    "location": "New Theronfort",
+    "time": "Sun Nov 07 2021 01:37:29 GMT+0100 (hora estándar de Europa central)",
+    "characters": ["6301221d03b6fbb712bbde7f"],
+    "metadata": {
+      "createdAt": "2022-08-20T18:50:43.445Z",
+      "createdBy": "userdev",
+      "updatedAt": "2022-08-20T18:50:43.445Z",
+      "updatedBy": "userdev"
+    }
+  }
+]

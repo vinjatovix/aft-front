@@ -6,6 +6,7 @@ export const AdminPanelRow = ({ actions, item, token }) => {
     <>
       <div className="control-panel-mini row">
         <button
+          data-testid="edit-button"
           className="bg-yellow"
           onClick={() => {
             actions.setDataDetail(item);
@@ -15,6 +16,7 @@ export const AdminPanelRow = ({ actions, item, token }) => {
           📝
         </button>
         <button
+          data-testid="delete-button"
           className="bg-red"
           onClick={() => {
             actions.setDataDetail(item);

@@ -7,8 +7,8 @@ import { UserRole } from "../../ui/UserRole";
 export const UserCard = ({ data }) => {
   return (
     <ul className="user-list">
-      <ListItem name="Nombre" children={data.username} />
-      <ListItem name="Role" children={UserRole(data.roles)} />
+      <ListItem name="username" children={data.username} />
+      <ListItem name="role" children={UserRole(data.roles)} />
     </ul>
   );
 };

@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content Component should render characters content 1`] = `
+<div>
+  <div
+    class="content"
+  >
+    <div
+      class="content_header"
+    >
+      <button
+        class="bg-green"
+      >
+        Añadir
+      </button>
+    </div>
+    <a
+      class=""
+      href="/characters/book/6301216103b6fbb712bbde7c"
+    >
+      <button
+        class="bg-blue"
+        data-testid="navigate-button"
+      >
+        🎭 Personajes
+      </button>
+    </a>
+    <img
+      alt="book"
+      class="portrait"
+      src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+    />
+    <h1>
+      Theresa Larkin
+      -
+      transmitter Refined
+    </h1>
+    <h2>
+      I'll index the auxiliary SAS program, that should interface the USB driver!
+    </h2>
+    <h3
+      data-testid="Personajes:"
+    >
+      Personajes:
+       
+      3
+    </h3>
+    <ul
+      class="content-list"
+    >
+      <li
+        class="content-list_item"
+        data-testid="Agnes Kris"
+      >
+        <div>
+          <p>
+            Agnes Kris
+            : 
+            encompassing
+            . 
+            instintive
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+      <li
+        class="content-list_item"
+        data-testid="Leon Mohr"
+      >
+        <div>
+          <p>
+            Leon Mohr
+            : 
+            background
+            . 
+            instintive
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+      <li
+        class="content-list_item"
+        data-testid="Terrence Rosenbaum"
+      >
+        <div>
+          <p>
+            Terrence Rosenbaum
+            : 
+            Global
+            . 
+            instintive
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Content Component should render scenes content 1`] = `
+<div>
+  <div
+    class="content"
+  >
+    <div
+      class="content_header"
+    >
+      <button
+        class="bg-green"
+      >
+        Añadir
+      </button>
+    </div>
+    <a
+      class=""
+      href="/characters/book/6301216103b6fbb712bbde7c"
+    >
+      <button
+        class="bg-blue"
+        data-testid="navigate-button"
+      >
+        🎭 Personajes
+      </button>
+    </a>
+    <img
+      alt="book"
+      class="portrait"
+      src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+    />
+    <h1>
+      Theresa Larkin
+      -
+      transmitter Refined
+    </h1>
+    <h2>
+      I'll index the auxiliary SAS program, that should interface the USB driver!
+    </h2>
+    <h3
+      data-testid="Escenas:"
+    >
+      Escenas:
+       
+      3
+    </h3>
+    <ul
+      class="content-list"
+    >
+      <li
+        class="content-list_item"
+        data-testid="e - User-centric"
+      >
+        <div>
+          <p>
+            e - User-centric
+            -
+            Predovichaven
+             
+            Sun Oct 03 2021 03:16:19 GMT+0200 (hora de verano de Europa central)
+            : 
+            programming the card won't do anything, we need to hack the solid state AGP driver!
+            .
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+      <li
+        class="content-list_item"
+        data-testid="l - Centralized"
+      >
+        <div>
+          <p>
+            l - Centralized
+            -
+            Lomahaven
+             
+            Mon Jan 17 2022 13:41:10 GMT+0100 (hora estándar de Europa central)
+            : 
+            If we index the circuit, we can get to the XSS matrix through the bluetooth PNG bus!
+            .
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+      <li
+        class="content-list_item"
+        data-testid="y - Synergized"
+      >
+        <div>
+          <p>
+            y - Synergized
+            -
+            Aufderharbury
+             
+            Sat Oct 16 2021 22:26:24 GMT+0200 (hora de verano de Europa central)
+            : 
+            The TCP array is down, transmit the digital bandwidth so we can reboot the HDD pixel!
+            .
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+      <li
+        class="content-list_item"
+        data-testid="y - Progressive"
+      >
+        <div>
+          <p>
+            y - Progressive
+            -
+            New Theronfort
+             
+            Sun Nov 07 2021 01:37:29 GMT+0100 (hora estándar de Europa central)
+            : 
+            Use the multi-byte HDD port, then you can compress the bluetooth matrix!
+            .
+          </p>
+        </div>
+        <div
+          class="control-panel-mini row"
+        >
+          <button
+            class="bg-yellow"
+            data-testid="edit-button"
+          >
+            📝
+          </button>
+          <button
+            class="bg-red"
+            data-testid="delete-button"
+          >
+            🗑️
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
