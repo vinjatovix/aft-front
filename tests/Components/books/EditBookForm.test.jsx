@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import EditBookForm from "../../../src/Components/books/EditBookForm";
+import { EditBookForm } from "../../../src/Components/books/EditBookForm";
 import { fetchUpdateBook } from "../../../src/http";
 import actions from "../../fixtures/actions";
 

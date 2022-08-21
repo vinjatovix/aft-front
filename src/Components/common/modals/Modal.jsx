@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const Modal = ({ actions, children, addedStyles }) => {
   const style = addedStyles ? `modal-body ${addedStyles}` : "modal-body";
   return (
-    <div className="modal">
+    <div data-testid="modal" className="modal">
       <div className="modal-content">
         <div className="modal-header">
           <span className="close bg-red" onClick={actions.close}>

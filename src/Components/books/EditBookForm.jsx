@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 import { fetchAddBook, fetchUpdateBook } from "../../http";
 import { resetMessage } from "../../helpers/resetMessage";
 
-const EditBookForm = ({ auth, data, actions }) => {
+export const EditBookForm = ({ auth, data, actions }) => {
   const successText = data ? "Obra actualizada" : "Obra añadida";
   const initMessage = { type: null, text: null };
   const [message, setMessage] = useState(initMessage);
@@ -62,5 +62,3 @@ EditBookForm.propTypes = {
 EditBookForm.defaultProps = {
   data: null,
 };
-
-export default EditBookForm;

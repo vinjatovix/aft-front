@@ -49,7 +49,7 @@ export const CharactersScreen = ({
         <ContentHeader
           book={book}
           title="Personajes:"
-          count={dispatchEntity.count}
+          count={Entity.data.length}
         />
 
         <ContentBody
