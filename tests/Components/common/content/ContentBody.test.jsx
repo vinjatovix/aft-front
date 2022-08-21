@@ -56,8 +56,7 @@ describe("ContentBody Component", () => {
     );
 
     expect(container).toMatchSnapshot();
-    expect(screen.getAllByTestId("edit-button")).toHaveLength(2);
-    expect(screen.getAllByTestId("delete-button")).toHaveLength(2);
+    expect(screen.getAllByTestId("action-button")).toHaveLength(4);
   });
 
   it("should render characters content without admin buttons", async () => {
@@ -125,7 +124,6 @@ describe("ContentBody Component", () => {
     );
 
     expect(container).toMatchSnapshot();
-    expect(screen.queryByTestId("edit-button")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("delete-button")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("action-button")).not.toBeInTheDocument();
   });
 });

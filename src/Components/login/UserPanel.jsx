@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import ChangePasswordForm from "./ChangePasswordForm";
 import { NavLink } from "react-router-dom";
 import Card from "../../Components/common/card/Card";
+import { ActionButton } from "../ui/buttons/ActionButton";
+import { NavigateButton } from "../ui/buttons/NavigateButton";
 
 const UserPanel = ({ auth, handleLogOut }) => {
   const [modals, setModals] = useState({
@@ -16,34 +18,24 @@ const UserPanel = ({ auth, handleLogOut }) => {
         <div className="user-dashboard">
           <Card type="user" data={auth.user} />
 
-          <button className="action-button bg-yellow" onClick={handleLogOut}>
-            Logout
-          </button>
+          <ActionButton
+            text="Logout"
+            type="btn-big bg-yellow"
+            action={handleLogOut}
+          />
 
-          <button
-            className="action-button bg-red"
-            onClick={() =>
-              setModals({
-                password: true,
-              })
-            }
-          >
-            Cambiar contraseña
-          </button>
+          <ActionButton
+            text="Cambiar contraseña"
+            type="btn-big bg-red"
+            action={() => setModals({ ...modals, password: true })}
+          />
         </div>
         {isAdmin && (
           <div className="panel">
             <h1>ADMIN PANEL</h1>
-            <div>
-              <NavLink to="/users">
-                <button className="action-button bg-green">
-                  <i className="fas fa-users"> </i> Usuarios
-                </button>
-              </NavLink>
-              <button className="action-button bg-green">
-                <i className="fas fa-book"> </i> Obras
-              </button>
-            </div>
+            <NavLink to="/users">
+              <NavigateButton text="Usuarios" />
+            </NavLink>
           </div>
         )}
       </div>

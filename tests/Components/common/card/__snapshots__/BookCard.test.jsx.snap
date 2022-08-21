@@ -49,19 +49,19 @@ exports[`BookCard Component should match snapshot 1`] = `
       </button>
     </a>
     <div
-      class="control-panel-mini"
+      class="control-panel-mini "
     >
       <button
-        class="bg-yellow"
-        data-testid="edit-button"
+        class="btn-big bg-yellow"
+        data-testid="action-button"
       >
-        📝 editar
+        📝 Editar
       </button>
       <button
-        class="bg-red"
-        data-testid="delete-button"
+        class="btn-big bg-red"
+        data-testid="action-button"
       >
-        🗑️ eliminar
+        🗑️ Eliminar
       </button>
     </div>
   </div>

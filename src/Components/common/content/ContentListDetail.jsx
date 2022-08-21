@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AdminPanelRow } from "../../ui/admin/AdminPanelRow";
+import { AdminButtons } from "../../ui/admin/AdminButtons";
 
 export const ContentListDetail = ({ actions, item, token, isAdmin, type }) => {
   const scene = (
@@ -24,7 +24,9 @@ export const ContentListDetail = ({ actions, item, token, isAdmin, type }) => {
         {type === "scene" && scene}
         {type === "character" && character}
       </div>
-      {isAdmin && <AdminPanelRow actions={actions} item={item} token={token} />}
+      {isAdmin && (
+        <AdminButtons type="row" actions={actions} item={item} token={token} />
+      )}
     </>
   );
 };

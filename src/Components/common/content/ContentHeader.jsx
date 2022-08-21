@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const ContentHeader = ({ book, title, count }) => {
-  console.log(title);
   return (
     <>
       {book && (
