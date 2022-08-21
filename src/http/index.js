@@ -31,6 +31,15 @@ export const fetchUpdatePassword = async (token, body) =>
 export const fetchWorks = async (token) =>
   fetcher(api.work.getAll.path, api.work.getAll.method, { token });
 
+export const fetchWorksByUser = async (token, username) =>
+  fetcher(
+    api.work.getByStudent.path.replace(":username", username),
+    api.work.getByStudent.method,
+    {
+      token,
+    }
+  );
+
 export const fetchWorkById = async (token, id) =>
   fetcher(api.work.getById.path.replace(":id", id), api.work.getById.method, {
     token,
