@@ -4,6 +4,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import EditCharacterForm from "../../../src/Components/characters/EditCharacterForm";
 import { fetchUpdateCharacter } from "../../../src/http";
+import actions from "../../fixtures/actions";
 
 jest.mock("../../../src/http", () => ({
   fetchUpdateCharacter: jest.fn().mockReturnValue({ ok: true }),
@@ -17,16 +18,6 @@ const data = {
   gender: "male",
   center: "instintive",
   description: "some description",
-};
-
-const actions = {
-  setDataDetail: jest.fn(),
-  add: jest.fn(),
-  close: jest.fn(),
-  delete: jest.fn(),
-  edit: jest.fn(),
-  detail: jest.fn(),
-  refresh: jest.fn(),
 };
 
 const auth = {

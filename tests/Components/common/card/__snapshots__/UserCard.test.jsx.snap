@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserCard Component should match snapshot 1`] = `
+<div>
+  <ul
+    class="user-list"
+  >
+    <li
+      class=""
+      data-testid="username"
+    >
+      user
+    </li>
+    <li
+      class=""
+      data-testid="role"
+    >
+      <strong
+        class="red"
+      >
+        ADMIN
+      </strong>
+    </li>
+  </ul>
+</div>
+`;

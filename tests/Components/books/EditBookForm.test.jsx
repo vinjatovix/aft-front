@@ -4,9 +4,25 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import EditBookForm from "../../../src/Components/books/EditBookForm";
 import { fetchUpdateBook } from "../../../src/http";
+import actions from "../../fixtures/actions";
 
 jest.mock("../../../src/http", () => ({
-  fetchUpdateBook: jest.fn().mockReturnValue({ ok: true }),
+  fetchUpdateBook: jest
+    .fn()
+    .mockReturnValueOnce({ ok: true })
+    .mockReturnValue({
+      error: "Mongoose validation error",
+      module: "mongoose",
+      code: "E201",
+      id: "MONGO_VALIDATION_ERROR",
+      message: "Mongoose validation error",
+      errors: ["Validation failed: author: Path `author` is required."],
+      status: 400,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        vary: "Origin",
+      },
+    }),
 }));
 
 const data = {
@@ -15,16 +31,6 @@ const data = {
   author: "Autor",
   img: "https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg",
   description: "Descripción",
-};
-
-const actions = {
-  setDataDetail: jest.fn(),
-  add: jest.fn(),
-  close: jest.fn(),
-  delete: jest.fn(),
-  edit: jest.fn(),
-  detail: jest.fn(),
-  refresh: jest.fn(),
 };
 
 const auth = {

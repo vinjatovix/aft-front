@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "./card/Card";
+import Card from "./Card";
 
 export const CardGrid = ({ data, actions, isAdmin, type, token }) => {
   return (

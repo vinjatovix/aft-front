@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
-import { CardGrid } from "../../Components/common/CardGrid";
 import { Modal } from "../../Components/common/modals/Modal";
 import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
 
@@ -11,6 +10,7 @@ import { getBooks } from "../../helpers/getBooks";
 import EditBookForm from "../../Components/books/EditBookForm";
 import { Content } from "../../Components/common/content/Content";
 import { ContentHeader } from "../../Components/common/content/ContentHeader";
+import { CardGrid } from "../../Components/common/card/CardGrid";
 
 export const BooksScreen = ({
   auth,

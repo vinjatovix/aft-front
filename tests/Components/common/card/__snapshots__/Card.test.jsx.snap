@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component should render a book card 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="flex-wrapper column"
+    >
+      <ul
+        class="book"
+        data-testid="book-detail"
+      >
+        <img
+          alt="Obra"
+          src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+        />
+        <li
+          class=""
+          data-testid="Obra"
+        >
+          Obra
+        </li>
+        <li
+          class="small"
+          data-testid="Autor"
+        >
+          Autor
+        </li>
+      </ul>
+      <a
+        class=""
+        href="/characters/book/5e9f8f8f8f8f8f8f8f8f8f8"
+      >
+        <button
+          class="bg-blue"
+          data-testid="navigate-button"
+        >
+          🎭 Personajes
+        </button>
+      </a>
+      <a
+        class=""
+        href="/scenes/book/5e9f8f8f8f8f8f8f8f8f8f8"
+      >
+        <button
+          class="bg-blue"
+          data-testid="navigate-button"
+        >
+          🎬 Escenas
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card Component should render a works card 1`] = `
+<div>
+  <div
+    class="card"
+  />
+</div>
+`;

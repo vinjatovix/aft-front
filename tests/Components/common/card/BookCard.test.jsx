@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { BookCard } from "../../../../src/Components/common/card/BookCard";
 import { UserContext } from "../../../../src/contexts/UserContext";
+import actions from "../../../fixtures/actions";
 import getUserContext from "../../../fixtures/getUserContext";
 import { arrayElement } from "../../../fixtures/random";
 
@@ -18,16 +19,6 @@ describe("BookCard Component", () => {
     author: "Autor",
     img: "https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg",
     description: "Descripción",
-  };
-
-  const actions = {
-    setDataDetail: jest.fn(),
-    add: jest.fn(),
-    close: jest.fn(),
-    delete: jest.fn(),
-    edit: jest.fn(),
-    detail: jest.fn(),
-    refresh: jest.fn(),
   };
 
   it("should match snapshot", async () => {

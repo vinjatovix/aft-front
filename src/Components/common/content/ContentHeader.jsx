@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const ContentHeader = ({ book, title, count }) => {
+  console.log(title);
   return (
     <>
       {book && (
@@ -22,7 +23,7 @@ export const ContentHeader = ({ book, title, count }) => {
         </>
       )}
 
-      <h3>
+      <h3 data-testid={title}>
         {title} {count}
       </h3>
     </>
