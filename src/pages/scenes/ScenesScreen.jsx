@@ -50,7 +50,7 @@ export const ScenesScreen = ({
         <ContentHeader
           book={book}
           title="Escenas:"
-          count={dispatchEntity.count}
+          count={Entity.data.length}
         />
 
         <ContentBody

@@ -6,6 +6,7 @@ import { fetchLogin } from "../../http";
 import { resetMessage } from "../../helpers/resetMessage";
 import { LoginForm } from "../../Components/login/LoginForm";
 import UserPanel from "../../Components/login/UserPanel";
+import { isAuthenticated } from "../../helpers/isAuthenticated";
 
 const INIT_MESSAGE = { type: null, text: null };
 
@@ -46,11 +47,9 @@ export const LoginScreen = () => {
 
   return (
     <>
-      {auth && auth.user && (
+      {isAuthenticated(auth) ? (
         <UserPanel auth={auth} handleLogOut={handleLogOut} />
-      )}
-
-      {(!auth || !auth.user) && (
+      ) : (
         <LoginForm
           formState={formState}
           handleChange={handleChange}

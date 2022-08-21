@@ -17,6 +17,7 @@ exports[`UserCard Component should match snapshot 1`] = `
     >
       <strong
         class="red"
+        data-testid="user-role"
       >
         ADMIN
       </strong>

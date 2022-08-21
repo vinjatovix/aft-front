@@ -7,5 +7,5 @@ module.exports = {
   watchPathIgnorePatterns: ["<rootDir>/test-report.json"],
   reporters: ["default"],
   testResultsProcessor: "jest-sonar-reporter",
-  coveragePathIgnorePatterns: ["/node_modules/", "/test/","/src/helpers","/src/pages"],
+  coveragePathIgnorePatterns: ["/node_modules/", "/test/", "/src/helpers"],
 };

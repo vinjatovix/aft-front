@@ -7,7 +7,7 @@ import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
 import { BookDetail } from "../../Components/books/BookDetail";
 import { deleteBook } from "../../helpers/deleteBook";
 import { getBooks } from "../../helpers/getBooks";
-import EditBookForm from "../../Components/books/EditBookForm";
+import { EditBookForm } from "../../Components/books/EditBookForm";
 import { Content } from "../../Components/common/content/Content";
 import { ContentHeader } from "../../Components/common/content/ContentHeader";
 import { CardGrid } from "../../Components/common/card/CardGrid";
@@ -32,7 +32,7 @@ export const BooksScreen = ({
   return (
     <>
       <Content modals={modals} modalActions={modalActions} isAdmin={isAdmin}>
-        <ContentHeader title="Obras:" count={dispatchEntity.count} />
+        <ContentHeader title="Obras:" count={Entity.data.length} />
         <CardGrid
           type="book"
           data={Entity.data}

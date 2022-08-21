@@ -188,7 +188,7 @@ exports[`Content Component should render scenes content 1`] = `
     >
       Escenas:
        
-      3
+      4
     </h3>
     <ul
       class="content-list"
