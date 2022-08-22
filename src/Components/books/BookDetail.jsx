@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
+import { DEFAULT_COVER_BOOK } from "../../../fixtures/img/urls";
 
 export const BookDetail = ({ data }) => {
-  const defaultCoverBook =
-    "https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg";
-
   return (
     <div className="detail">
       <p>{data.name}</p>
       <p className="small">{data.author}</p>
-      <img src={data.img || defaultCoverBook} alt="book" />
+      <img src={data.img || DEFAULT_COVER_BOOK} alt="book" />
       <p>{data.description}</p>
     </div>
   );
@@ -16,9 +14,9 @@ export const BookDetail = ({ data }) => {
 
 BookDetail.propTypes = {
   data: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    author: PropTypes.string,
     img: PropTypes.string,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
+    description: PropTypes.string,
+  }),
 };

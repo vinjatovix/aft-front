@@ -1,2 +1,1 @@
-export const isAuthenticated = (auth) =>
-  auth && auth.user && auth.user.roles.length;
+export const isAuthenticated = (auth) => auth?.user?.roles?.length;

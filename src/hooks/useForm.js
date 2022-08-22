@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export const useForm = (initialState = {}) => {
+export const useForm = (initialState = {}, resetState = {}) => {
   const [formState, setFormState] = useState(initialState);
 
   const reset = () => {
-    setFormState(initialState);
+    setFormState(resetState);
   };
 
   const handleChange = (e) => {

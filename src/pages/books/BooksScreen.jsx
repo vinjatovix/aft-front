@@ -1,90 +1,87 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { authType, modalActionsType, modalsStateType } from "../../PropTypes";
+import { fetchDeleteBook } from "../../http";
 
-import { Modal } from "../../Components/common/modals/Modal";
-import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
-
+import { Blur } from "../../Components/ui/Blur";
 import { BookDetail } from "../../Components/books/BookDetail";
-import { deleteBook } from "../../helpers/deleteBook";
-import { getBooks } from "../../helpers/getBooks";
-import { EditBookForm } from "../../Components/books/EditBookForm";
-import { Content } from "../../Components/common/content/Content";
-import { ContentHeader } from "../../Components/common/content/ContentHeader";
 import { CardGrid } from "../../Components/common/card/CardGrid";
+import { Content } from "../../Components/common/content/Content";
+import { ConfirmModal } from "../../Components/common/modals/ConfirmModal";
+import { EditBookForm } from "../../Components/books/EditBookForm";
 
-export const BooksScreen = ({
-  auth,
-  dispatchEntity,
-  modalActions,
-  modals,
-  Entity,
-  isAdmin,
-}) => {
-  const _getBooks = getBooks(auth, dispatchEntity);
+import { resetMessage } from "../../helpers/resetMessage";
 
-  const _deleteInstance = deleteBook(modalActions, dispatchEntity);
+const FEEDBACK_INITIAL = { type: null, text: null };
 
-  useEffect(() => {
-    auth.token && _getBooks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.token, Entity.updatedAt]);
+export const BooksScreen = ({ auth, actions, modals, isEditor }) => {
+  const [feedBack, setFeedBack] = useState(FEEDBACK_INITIAL);
+
+  const deleteBook = async (token, _id) => {
+    const res = await fetchDeleteBook(token, _id);
+    if (res.ok) {
+      actions.refresh();
+      actions.close();
+    } else {
+      const error = await res.json();
+      setFeedBack({ type: "error", text: error.message });
+      resetMessage(setFeedBack, FEEDBACK_INITIAL);
+    }
+  };
+
+  const detail = modals.data && <BookDetail auth={auth} data={modals.data} />;
+
+  const edit = modals.blur && (
+    <EditBookForm
+      actions={actions}
+      auth={auth}
+      data={modals.edit ? modals.data : null}
+    />
+  );
+
+  const confirmDelete = modals.blur && (
+    <ConfirmModal
+      actions={actions}
+      auth={auth}
+      callback={deleteBook}
+      confirmationQuestion="¿Estás seguro de que quieres eliminar esta obra?"
+      data={modals.data}
+      feedbackMessage={feedBack}
+    />
+  );
 
   return (
     <>
-      <Content modals={modals} modalActions={modalActions} isAdmin={isAdmin}>
-        <ContentHeader title="Obras:" count={Entity.data.length} />
+      <Content modals={modals} actions={actions} isEditor={isEditor}>
         <CardGrid
+          actions={actions}
+          auth={auth}
+          isEditor={isEditor}
+          modals={modals}
           type="book"
-          data={Entity.data}
-          isAdmin={isAdmin}
-          actions={modalActions}
-          token={auth.token}
         />
       </Content>
 
       {modals.blur && (
-        <Modal actions={{ close: modalActions.close }}>
-          {modals.detail && <BookDetail auth={auth} data={modals.data} />}
-          {modals.edit && (
-            <EditBookForm
-              auth={auth}
-              data={modals.data}
-              actions={modalActions}
-            />
-          )}
-          {modals.add && <EditBookForm auth={auth} actions={modalActions} />}
-          {modals.delete && (
-            <ConfirmModal
-              auth={auth}
-              data={modals.data}
-              modalActions={modalActions}
-              callback={_deleteInstance}
-              message="¿Estás seguro de que quieres eliminar esta obra?"
-            />
-          )}
-        </Modal>
+        <Blur
+          actions={actions}
+          confirmDelete={confirmDelete}
+          detail={detail}
+          edit={edit}
+          modals={modals}
+        />
       )}
     </>
   );
 };
 
 BooksScreen.propTypes = {
-  auth: PropTypes.object.isRequired,
-  dispatchEntity: PropTypes.object.isRequired,
-  modalActions: PropTypes.shape({
-    setDataDetail: PropTypes.func.isRequired,
-    add: PropTypes.func.isRequired,
-    close: PropTypes.func.isRequired,
-    delete: PropTypes.func.isRequired,
-    edit: PropTypes.func.isRequired,
-    detail: PropTypes.func.isRequired,
-    refresh: PropTypes.func.isRequired,
-  }).isRequired,
-  modals: PropTypes.object.isRequired,
-  Entity: PropTypes.object.isRequired,
-  isAdmin: PropTypes.bool,
+  auth: authType,
+  actions: modalActionsType,
+  modals: modalsStateType,
+  isEditor: PropTypes.bool,
 };
 
 BooksScreen.defaultProps = {
-  isAdmin: false,
+  isEditor: false,
 };

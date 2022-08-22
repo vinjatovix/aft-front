@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useForm } from "../../hooks/useForm";
 import { changePassword } from "../../helpers/changePassword";
 
-const ChangePasswordForm = ({ user: { username } }) => {
+export const ChangePasswordForm = ({ user: { username } }) => {
   const initMessage = { type: null, text: null };
   const [message, setMessage] = useState(initMessage);
   const [formState, handleChange, resetForm] = useForm({
@@ -73,5 +73,3 @@ ChangePasswordForm.propTypes = {
     username: PropTypes.string.isRequired,
   }).isRequired,
 };
-
-export default ChangePasswordForm;

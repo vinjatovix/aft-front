@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import Card from "../../../../src/Components/common/card/Card";
-import actions from "../../../fixtures/actions";
+import { Card } from "../../../../src/Components/common/card/Card";
+import mockActions from "../../../fixtures/mockActions";
 
 describe("Card Component", () => {
   it("should render a book card", () => {
@@ -17,8 +17,8 @@ describe("Card Component", () => {
               img: "https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg",
               description: "Descripción",
             }}
-            actions={actions}
-            isAdmin={false}
+            actions={mockActions}
+            isEditor={false}
             token="token"
           />
         </Router>
@@ -33,7 +33,7 @@ describe("Card Component", () => {
       <>
         <Router>
           <Card
-            type="works"
+            actions={mockActions}
             data={{
               _id: "5e9f8f8f8f8f8f8f8f8f8f8",
               book: { _id: "5e9f8f8f8f8f8f8f8f8f8f8", name: "Obra" },
@@ -42,9 +42,10 @@ describe("Card Component", () => {
               scene: { _id: "5e9f8f8f8f8f8f8f8f8f8f8", name: "Escena" },
               description: "Descripción",
             }}
-            actions={actions}
-            isAdmin={false}
+            isEditor={false}
             token="token"
+            type="works"
+            w
           />
         </Router>
       </>

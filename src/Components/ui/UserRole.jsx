@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const UserRole = (roles) => {
-  let result = {};
+export const UserRole = ({ roles }) => {
+  let result = <></>;
 
   if (roles.includes("aft.user")) {
     result = (
@@ -30,5 +30,5 @@ export const UserRole = (roles) => {
 };
 
 UserRole.propTypes = {
-  roles: PropTypes.array.isRequired,
+  roles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

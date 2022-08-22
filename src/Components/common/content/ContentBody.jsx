@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ListItem } from "../ListItem";
 import { ContentListDetail } from "./ContentListDetail";
 
-export const ContentBody = ({ content, isAdmin, actions, token, type }) => {
+export const ContentBody = ({ content, isEditor, actions, token, type }) => {
   return (
     <ul className="content-list">
       {content &&
@@ -11,7 +11,7 @@ export const ContentBody = ({ content, isAdmin, actions, token, type }) => {
           <ListItem key={item._id} className="content-list_item" {...item}>
             <ContentListDetail
               type={type}
-              isAdmin={isAdmin}
+              isEditor={isEditor}
               token={token}
               actions={actions}
               item={item}
@@ -24,7 +24,7 @@ export const ContentBody = ({ content, isAdmin, actions, token, type }) => {
 
 ContentBody.propTypes = {
   content: PropTypes.array,
-  isAdmin: PropTypes.bool,
+  isEditor: PropTypes.bool,
   actions: PropTypes.object.isRequired,
   token: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
@@ -32,5 +32,5 @@ ContentBody.propTypes = {
 
 ContentBody.defaultProps = {
   content: [],
-  isAdmin: false,
+  isEditor: false,
 };

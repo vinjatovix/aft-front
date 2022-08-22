@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ListItem } from "../ListItem";
+
+import { ListItem } from "../common/ListItem";
 
 export const WorkCard = ({ data }) => {
   return (
@@ -35,18 +36,18 @@ export const WorkCard = ({ data }) => {
 
 WorkCard.propTypes = {
   data: PropTypes.shape({
-    metadata: PropTypes.shape({
-      createdBy: PropTypes.string.isRequired,
-    }).isRequired,
     character: PropTypes.shape({
       book: PropTypes.shape({
         name: PropTypes.string.isRequired,
       }).isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired,
+    description: PropTypes.string,
+    metadata: PropTypes.shape({
+      createdBy: PropTypes.string.isRequired,
+    }).isRequired,
     scene: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
-    description: PropTypes.string.isRequired,
   }).isRequired,
 };

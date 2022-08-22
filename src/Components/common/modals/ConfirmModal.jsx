@@ -4,13 +4,14 @@ import { ActionButton } from "../../ui/buttons/ActionButton";
 export const ConfirmModal = ({
   auth,
   data,
-  modalActions,
+  actions,
+  confirmationQuestion,
+  feedbackMessage,
   callback,
-  message,
 }) => {
   return (
     <div className="detail">
-      <p>{message}</p>
+      <p>{confirmationQuestion}</p>
       <ActionButton
         text="SI"
         type="btn-big bg-red"
@@ -18,11 +19,9 @@ export const ConfirmModal = ({
         args={[auth.token, data._id]}
       />
 
-      <ActionButton
-        text="NO"
-        type="btn-big bg-green"
-        action={modalActions.close}
-      />
+      <ActionButton text="NO" type="btn-big bg-green" action={actions.close} />
+
+      <p className={feedbackMessage.type}>{feedbackMessage.text}</p>
     </div>
   );
 };
@@ -30,7 +29,7 @@ export const ConfirmModal = ({
 ConfirmModal.propTypes = {
   auth: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  modalActions: PropTypes.shape({
+  actions: PropTypes.shape({
     close: PropTypes.func.isRequired,
   }).isRequired,
   callback: PropTypes.func.isRequired,

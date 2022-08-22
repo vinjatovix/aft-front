@@ -1,13 +1,36 @@
 import { useEffect, useRef, useState } from "react";
+import { fetchData } from "../http";
 
-export const useFetch = (url) => {
+const INITIAL_STATE = {
+  loading: true,
+  error: null,
+  data: null,
+};
+
+const useFetch = (
+  path,
+  method,
+  { body, token, version = "v1", run = null }
+) => {
   const isMounted = useRef(true);
+  const [state, setState] = useState(INITIAL_STATE);
 
-  const [state, setState] = useState({
-    data: null,
-    loading: true,
-    error: null,
-  });
+  const reFetch = () => {
+    setState(INITIAL_STATE);
+    fetchData({ version, path, method, token, body, setState });
+  };
+
+  useEffect(() => {
+    if (token || run) {
+      fetchData({ version, path, method, token, body, setState });
+    } else {
+      setState({
+        data: null,
+        loading: false,
+        error: "No token",
+      });
+    }
+  }, [method, body, token, version, path, run]);
 
   useEffect(() => {
     return () => {
@@ -15,26 +38,7 @@ export const useFetch = (url) => {
     };
   }, []);
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (isMounted.current) {
-          setState({
-            data,
-            loading: false,
-            error: null,
-          });
-        }
-      })
-      .catch((error) => {
-        setState({
-          data: null,
-          loading: false,
-          error: error.message,
-        });
-      });
-  }, [url]);
-
-  return state;
+  return [state, reFetch];
 };
+
+export default useFetch;
