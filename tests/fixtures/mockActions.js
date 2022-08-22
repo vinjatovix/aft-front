@@ -1,4 +1,4 @@
-const actions = {
+const mockActions = {
   setDataDetail: jest.fn(),
   add: jest.fn(),
   close: jest.fn(),
@@ -8,4 +8,4 @@ const actions = {
   refresh: jest.fn(),
 };
 
-export default actions;
+export default mockActions;

@@ -5,7 +5,7 @@ import { useForm } from "../../hooks/useForm";
 import { fetchAddScene, fetchUpdateScene } from "../../http";
 import { resetMessage } from "../../helpers/resetMessage";
 
-const EditSceneForm = ({ auth, data, actions }) => {
+export const EditSceneForm = ({ auth, data, actions }) => {
   const successText = data ? "Personaje actualizado" : "Personaje añadido";
   const initMessage = { type: null, text: null };
   const [message, setMessage] = useState(initMessage);
@@ -62,5 +62,3 @@ EditSceneForm.propTypes = {
 EditSceneForm.defaultProps = {
   data: null,
 };
-
-export default EditSceneForm;

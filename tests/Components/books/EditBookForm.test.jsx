@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { EditBookForm } from "../../../src/Components/books/EditBookForm";
 import { fetchUpdateBook } from "../../../src/http";
-import actions from "../../fixtures/actions";
+import mockActions from "../../fixtures/mockActions";
 
 jest.mock("../../../src/http", () => ({
   fetchUpdateBook: jest
@@ -43,7 +43,7 @@ describe("EditBookForm Component", () => {
   it("should render the form with no values", () => {
     render(
       <Router>
-        <EditBookForm auth={auth} actions={actions} />
+        <EditBookForm auth={auth} actions={mockActions} />
       </Router>
     );
 
@@ -69,7 +69,7 @@ describe("EditBookForm Component", () => {
 
     render(
       <Router>
-        <EditBookForm auth={auth} data={data} actions={actions} />
+        <EditBookForm auth={auth} data={data} actions={mockActions} />
       </Router>
     );
     const inputs = screen.getAllByRole("textbox");

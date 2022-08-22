@@ -1,5 +1,33 @@
 import { api } from "./api";
 
+const _pack = (body) =>
+  typeof body === "string" ? body : JSON.stringify(body);
+
+export const fetchData = ({ method, path, version, token, body, setState }) => {
+  fetch(`${api.host}${version}${path}`, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    ...(body ? { body: _pack(body) } : {}),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      setState({
+        data,
+        loading: false,
+        error: null,
+      });
+    })
+    .catch((error) => {
+      setState({
+        data: null,
+        loading: false,
+        error: error.message,
+      });
+    });
+};
 export const fetcher = async (path, method, { body, token, version = "v1" }) =>
   fetch(`${api.host}${version}${path}`, {
     method,
@@ -9,9 +37,6 @@ export const fetcher = async (path, method, { body, token, version = "v1" }) =>
     },
     ...(body ? { body: _pack(body) } : {}),
   });
-
-export const _pack = (body) =>
-  typeof body === "string" ? body : JSON.stringify(body);
 
 export const fetchLogin = async (body) =>
   fetcher(api.authentication.login.path, api.authentication.login.method, {

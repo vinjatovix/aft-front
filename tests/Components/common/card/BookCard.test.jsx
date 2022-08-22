@@ -6,10 +6,10 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { BookCard } from "../../../../src/Components/common/card/BookCard";
+import { BookCard } from "../../../../src/Components/books/BookCard";
 import { UserContext } from "../../../../src/contexts/UserContext";
-import actions from "../../../fixtures/actions";
 import getUserContext from "../../../fixtures/getUserContext";
+import mockActions from "../../../fixtures/mockActions";
 import { arrayElement } from "../../../fixtures/random";
 
 describe("BookCard Component", () => {
@@ -24,7 +24,12 @@ describe("BookCard Component", () => {
   it("should match snapshot", async () => {
     const { container } = render(
       <Router>
-        <BookCard data={data} isAdmin={true} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={true}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
 
@@ -34,7 +39,12 @@ describe("BookCard Component", () => {
   it("should show author inside li class small", async () => {
     render(
       <Router>
-        <BookCard data={data} isAdmin={false} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={false}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
     const li = screen.getByTestId(data.author);
@@ -46,7 +56,12 @@ describe("BookCard Component", () => {
   it("should show only characters and scenes buttons (non admin card)", async () => {
     render(
       <Router>
-        <BookCard data={data} isAdmin={false} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={false}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
     const buttons = screen.getAllByRole("button");
@@ -70,14 +85,14 @@ describe("BookCard Component", () => {
               element={
                 <BookCard
                   data={data}
-                  isAdmin={true}
-                  actions={actions}
+                  isEditor={true}
+                  actions={mockActions}
                   token="token"
                 />
               }
             />
             <Route
-              path="/characters/book/:bookId"
+              path="/book/:bookId/characters/"
               element={<h1>CharactersScreen</h1>}
             />
           </Routes>
@@ -94,7 +109,12 @@ describe("BookCard Component", () => {
   it("should show characters, scenes, edit and delete buttons (admin card)", async () => {
     render(
       <Router>
-        <BookCard data={data} isAdmin={true} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={true}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
     const buttons = screen.getAllByTestId("action-button");
@@ -116,27 +136,37 @@ describe("BookCard Component", () => {
   it("should call actions.edit when button is clicked", async () => {
     render(
       <Router>
-        <BookCard data={data} isAdmin={true} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={true}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
     const buttons = screen.getAllByTestId("action-button");
 
     fireEvent.click(buttons[0]);
 
-    expect(actions.edit).toHaveBeenCalled();
+    expect(mockActions.edit).toHaveBeenCalled();
   });
 
   it("should call actions.delete when button is clicked", async () => {
     render(
       <Router>
-        <BookCard data={data} isAdmin={true} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={true}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
 
     const buttons = screen.getAllByTestId("action-button");
     fireEvent.click(buttons[1]);
 
-    expect(actions.delete).toHaveBeenCalledWith(
+    expect(mockActions.delete).toHaveBeenCalledWith(
       "token",
       "5e9f8f8f8f8f8f8f8f8f8f8"
     );
@@ -145,13 +175,18 @@ describe("BookCard Component", () => {
   it("should call actions.detail when book ul is clicked", async () => {
     render(
       <Router>
-        <BookCard data={data} isAdmin={true} actions={actions} token="token" />
+        <BookCard
+          data={data}
+          isEditor={true}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
 
     const ul = screen.getByTestId("book-detail");
     fireEvent.click(ul);
 
-    expect(actions.detail).toHaveBeenCalled();
+    expect(mockActions.detail).toHaveBeenCalled();
   });
 });

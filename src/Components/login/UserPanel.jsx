@@ -1,36 +1,39 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import ChangePasswordForm from "./ChangePasswordForm";
 import { NavLink } from "react-router-dom";
-import Card from "../../Components/common/card/Card";
+import PropTypes from "prop-types";
+
 import { ActionButton } from "../ui/buttons/ActionButton";
+import { Card } from "../common/card/Card";
+import { ChangePasswordForm } from "./ChangePasswordForm";
 import { NavigateButton } from "../ui/buttons/NavigateButton";
 
-const UserPanel = ({ auth, handleLogOut }) => {
+export const UserPanel = ({ auth, handleLogOut }) => {
   const [modals, setModals] = useState({
     password: false,
     blur: false,
   });
-  const isAdmin = auth.user.roles.includes("aft.admin");
+  const isEditor = auth.user.roles.includes("aft.admin");
   return (
     <>
       <div data-testid="user-panel" className={modals.password ? "blur" : ""}>
-        <div className="user-dashboard">
-          <Card type="user" data={auth.user} />
+        <div className="grid">
+          <div className="user-dashboard">
+            <Card type="user" data={auth.user} />
 
-          <ActionButton
-            text="Logout"
-            type="btn-big bg-yellow"
-            action={handleLogOut}
-          />
+            <ActionButton
+              action={handleLogOut}
+              text="Logout"
+              type="btn-big bg-red"
+            />
 
-          <ActionButton
-            text="Cambiar contraseña"
-            type="btn-big bg-red"
-            action={() => setModals({ ...modals, password: true })}
-          />
+            <ActionButton
+              action={() => setModals({ ...modals, password: true })}
+              text="Cambiar contraseña"
+              type="btn-big bg-yellow"
+            />
+          </div>
         </div>
-        {isAdmin && (
+        {isEditor && (
           <div className="panel">
             <h1>ADMIN PANEL</h1>
             <NavLink to="/users">
@@ -70,5 +73,3 @@ UserPanel.propTypes = {
   }).isRequired,
   handleLogOut: PropTypes.func.isRequired,
 };
-
-export default UserPanel;

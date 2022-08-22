@@ -31,7 +31,7 @@ exports[`Card Component should render a book card 1`] = `
       </ul>
       <a
         class=""
-        href="/characters/book/5e9f8f8f8f8f8f8f8f8f8f8"
+        href="/book/5e9f8f8f8f8f8f8f8f8f8f8/characters"
       >
         <button
           class="bg-blue"
@@ -42,7 +42,7 @@ exports[`Card Component should render a book card 1`] = `
       </a>
       <a
         class=""
-        href="/scenes/book/5e9f8f8f8f8f8f8f8f8f8f8"
+        href="/book/5e9f8f8f8f8f8f8f8f8f8f8/scenes"
       >
         <button
           class="bg-blue"

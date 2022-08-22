@@ -5,10 +5,11 @@ import { useForm } from "../../hooks/useForm";
 import { fetchAddBook, fetchUpdateBook } from "../../http";
 import { resetMessage } from "../../helpers/resetMessage";
 
+const FEEDBACK_INITIAL = { type: null, text: null };
+
 export const EditBookForm = ({ auth, data, actions }) => {
   const successText = data ? "Obra actualizada" : "Obra añadida";
-  const initMessage = { type: null, text: null };
-  const [message, setMessage] = useState(initMessage);
+  const [message, setMessage] = useState(FEEDBACK_INITIAL);
   const [formState, handleChange, resetForm] = useForm(data ? { ...data } : {});
 
   const submit = async () => {
@@ -21,12 +22,12 @@ export const EditBookForm = ({ auth, data, actions }) => {
         type: "success",
         text: successText,
       });
-      resetMessage(setMessage, initMessage, resetForm);
+      resetMessage(setMessage, FEEDBACK_INITIAL, resetForm);
       actions.refresh();
     } else {
       const error = await res.json();
-      setMessage({ type: "error", text: error.errors });
-      resetMessage(setMessage, initMessage, resetForm);
+      setMessage({ type: "error", text: error.message });
+      resetMessage(setMessage, FEEDBACK_INITIAL, resetForm);
     }
   };
 

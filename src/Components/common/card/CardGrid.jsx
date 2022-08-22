@@ -1,33 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import Card from "./Card";
+import { modalActionsType, modalsStateType } from "../../../PropTypes";
+import { api } from "../../../http/api";
 
-export const CardGrid = ({ data, actions, isAdmin, type, token }) => {
+import { Card } from "./Card";
+import { ContentHeader } from "../content/ContentHeader";
+
+import useFetch from "../../../hooks/useFetch";
+
+export const CardGrid = ({
+  actions,
+  auth: { token },
+  isEditor,
+  modals,
+  type,
+}) => {
+  const [{ data, loading, error }, reFetch] = useFetch(
+    api[type].getAll.path,
+    api[type].getAll.method,
+    { token }
+  );
+
+  const title = type === "work" ? "Trabajos:" : "Obras:";
+  const count = data ? data.length : 0;
+
+  useEffect(() => {
+    token && reFetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modals.lastRefresh, token]);
+
   return (
-    <div className="card-grid">
-      {data.map((item) => (
-        <Card
-          type={type}
-          key={item._id}
-          data={item}
-          isAdmin={isAdmin}
-          actions={actions}
-          token={token}
-        />
-      ))}
-    </div>
+    <>
+      <ContentHeader count={count} title={title} />
+      <div className="card-grid">
+        {data &&
+          data.map((item) => (
+            <Card
+              actions={actions}
+              data={item}
+              isEditor={isEditor}
+              key={item._id}
+              token={token}
+              type={type}
+            />
+          ))}
+        {error && <div>{error}</div>}
+        {loading && <div>Cargando...</div>}
+      </div>
+    </>
   );
 };
 
 CardGrid.propTypes = {
+  actions: modalActionsType,
+  auth: PropTypes.shape({
+    token: PropTypes.string.isRequired,
+  }),
+  isEditor: PropTypes.bool,
+  modals: modalsStateType,
   type: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(PropTypes.shape({ _id: PropTypes.string.isRequired }))
-    .isRequired,
-  actions: PropTypes.object.isRequired,
-  isAdmin: PropTypes.bool,
-  token: PropTypes.string,
 };
 
 CardGrid.defaultProps = {
-  isAdmin: false,
+  isEditor: false,
 };

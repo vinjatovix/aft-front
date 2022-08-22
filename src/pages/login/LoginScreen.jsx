@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { fetchLogin } from "../../http";
+
+import { LoginForm } from "../../Components/login/LoginForm";
+import { UserPanel } from "../../Components/login/UserPanel";
+
 import { useForm } from "../../hooks/useForm";
 
-import { fetchLogin } from "../../http";
-import { resetMessage } from "../../helpers/resetMessage";
-import { LoginForm } from "../../Components/login/LoginForm";
-import UserPanel from "../../Components/login/UserPanel";
 import { isAuthenticated } from "../../helpers/isAuthenticated";
+import { resetMessage } from "../../helpers/resetMessage";
 
 const INIT_MESSAGE = { type: null, text: null };
 

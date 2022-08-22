@@ -1,6 +1,7 @@
-export const resetMessage = (set, feedBackMessage, callback) => {
+export const resetMessage = (set, initMessage, callback = () => ({})) => {
   setTimeout(() => {
-    set(feedBackMessage);
+    set(initMessage);
   }, 2500);
+
   callback();
 };

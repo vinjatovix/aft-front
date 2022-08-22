@@ -3,8 +3,8 @@ import "@testing-library/jest-dom";
 
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { UserCard } from "../../../../src/Components/common/card/UserCard";
-import actions from "../../../fixtures/actions";
+import mockActions from "../../../fixtures/mockActions";
+import { UserCard } from "../../../../src/Components/user/UserCard";
 
 describe("UserCard Component", () => {
   const data = {
@@ -15,7 +15,12 @@ describe("UserCard Component", () => {
   it("should match snapshot", async () => {
     const { container } = render(
       <Router>
-        <UserCard data={data} isAdmin={true} actions={actions} token="token" />
+        <UserCard
+          data={data}
+          isEditor={true}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
 
@@ -25,7 +30,12 @@ describe("UserCard Component", () => {
   it("should show ADMIN", async () => {
     render(
       <Router>
-        <UserCard data={data} isAdmin={false} actions={actions} token="token" />
+        <UserCard
+          data={data}
+          isEditor={false}
+          actions={mockActions}
+          token="token"
+        />
       </Router>
     );
     const li = screen.getByTestId("username");
@@ -42,8 +52,8 @@ describe("UserCard Component", () => {
             username: "user",
             roles: ["aft.user", "aft.editor"],
           }}
-          isAdmin={false}
-          actions={actions}
+          isEditor={false}
+          actions={mockActions}
           token="token"
         />
       </Router>
@@ -62,8 +72,8 @@ describe("UserCard Component", () => {
             username: "user",
             roles: ["aft.user"],
           }}
-          isAdmin={false}
-          actions={actions}
+          isEditor={false}
+          actions={mockActions}
           token="token"
         />
       </Router>

@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ContentBody } from "../../../../src/Components/common/content/ContentBody";
-import actions from "../../../fixtures/actions";
+import mockActions from "../../../fixtures/mockActions";
 
 describe("ContentBody Component", () => {
   it("should render scenes content with admin buttons", async () => {
@@ -12,9 +12,9 @@ describe("ContentBody Component", () => {
       <Router>
         <ContentBody
           type="scenes"
-          actions={actions}
+          actions={mockActions}
           token="token"
-          isAdmin={true}
+          isEditor={true}
           content={[
             {
               _id: "5e9f8f8f8f8f8f8f8f8f8f8",
@@ -64,9 +64,9 @@ describe("ContentBody Component", () => {
       <Router>
         <ContentBody
           type="characters"
-          actions={actions}
+          actions={mockActions}
           token="token"
-          isAdmin={false}
+          isEditor={false}
           content={[
             {
               _id: "6301221d03b6fbb712bbde7f",

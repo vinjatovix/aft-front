@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { CharacterForm } from "./CharacterForm";
-import { useForm } from "../../hooks/useForm";
+import { authType, modalActionsType } from "../../PropTypes";
 import { fetchAddCharacter, fetchUpdateCharacter } from "../../http";
+
+import { CharacterForm } from "./CharacterForm";
+
+import { useForm } from "../../hooks/useForm";
+
 import { resetMessage } from "../../helpers/resetMessage";
 
-const EditCharacterForm = ({ auth, data, actions }) => {
+export const EditCharacterForm = ({ actions, auth, data }) => {
   const successText = data ? "Personaje actualizado" : "Personaje añadido";
   const initMessage = { type: null, text: null };
   const [message, setMessage] = useState(initMessage);
@@ -26,7 +30,7 @@ const EditCharacterForm = ({ auth, data, actions }) => {
     } else {
       const error = await res.json();
       setMessage({ type: "error", text: error.errors });
-      resetMessage(setMessage, initMessage, resetForm);
+      resetMessage(setMessage, initMessage);
     }
   };
 
@@ -46,21 +50,11 @@ const EditCharacterForm = ({ auth, data, actions }) => {
 };
 
 EditCharacterForm.propTypes = {
-  auth: PropTypes.object.isRequired,
+  actions: modalActionsType,
+  auth: authType,
   data: PropTypes.object,
-  actions: PropTypes.shape({
-    setDataDetail: PropTypes.func.isRequired,
-    add: PropTypes.func.isRequired,
-    close: PropTypes.func.isRequired,
-    delete: PropTypes.func.isRequired,
-    edit: PropTypes.func.isRequired,
-    detail: PropTypes.func.isRequired,
-    refresh: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 EditCharacterForm.defaultProps = {
   data: null,
 };
-
-export default EditCharacterForm;

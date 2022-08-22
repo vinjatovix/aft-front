@@ -1,6 +1,6 @@
-const { checkAdminRole } = require("../../src/helpers/checkAdminRole");
+import { checkRole } from "../../src/helpers/checkRole";
 
-describe("checkAdminRole", () => {
+describe("checkRole", () => {
   it("returns true if the user has the aft.admin role", () => {
     const auth = {
       user: {
@@ -8,7 +8,7 @@ describe("checkAdminRole", () => {
       },
     };
 
-    expect(checkAdminRole(auth)).toBe(true);
+    expect(checkRole(auth, "admin")).toBe(true);
   });
 
   it("returns false if the user does not have the aft.admin role", () => {
@@ -18,6 +18,6 @@ describe("checkAdminRole", () => {
       },
     };
 
-    expect(checkAdminRole(auth)).toBe(false);
+    expect(checkRole(auth, "editor")).toBe(false);
   });
 });

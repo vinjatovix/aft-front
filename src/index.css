@@ -172,8 +172,9 @@ a {
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  height: 220px;
 }
 
 .card-grid {
@@ -296,9 +297,17 @@ select {
   grid-template-areas: "header" "content";
 }
 
+.grid {
+  display: grid;
+  grid-gap: 20px;
+  margin: 20px;
+  justify-items: center;
+  justify-content: center;
+}
+
 .user-dashboard {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
   color: aliceblue;
   font-size: 1.2rem;
@@ -429,3 +438,11 @@ select {
   align-items: center;
   gap: 1rem;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* screen breakpoints  600 768 992 1200   */

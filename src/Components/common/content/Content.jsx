@@ -1,17 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ActionButton } from "../../ui/buttons/ActionButton";
+import { modalsStateType } from "../../../PropTypes";
 
-export const Content = ({ children, modals, modalActions, isAdmin }) => {
+export const Content = ({ children, modals, actions, isEditor, isOpen }) => {
   return (
     <div className={modals.blur ? "content blur" : "content"}>
       <div className="content_header">
-        {isAdmin && (
-          <ActionButton
-            text="Añadir"
-            type="bg-green"
-            action={modalActions.add}
-          />
+        {(isEditor || isOpen) && (
+          <ActionButton text="Añadir" type="bg-green" action={actions.add} />
         )}
       </div>
       {children}
@@ -21,19 +18,13 @@ export const Content = ({ children, modals, modalActions, isAdmin }) => {
 
 Content.propTypes = {
   children: PropTypes.node.isRequired,
-  modals: PropTypes.object.isRequired,
-  modalActions: PropTypes.shape({
-    setDataDetail: PropTypes.func.isRequired,
+  modals: modalsStateType,
+  actions: PropTypes.shape({
     add: PropTypes.func.isRequired,
-    close: PropTypes.func.isRequired,
-    delete: PropTypes.func.isRequired,
-    edit: PropTypes.func.isRequired,
-    detail: PropTypes.func.isRequired,
-    refresh: PropTypes.func.isRequired,
   }).isRequired,
-  isAdmin: PropTypes.bool,
+  isEditor: PropTypes.bool,
 };
 
 Content.defaultProps = {
-  isAdmin: false,
+  isEditor: false,
 };

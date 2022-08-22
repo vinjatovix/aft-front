@@ -19,6 +19,11 @@ export const modalReducer = (state, action) => {
         delete: false,
         blur: false,
       };
+    case "REFRESH":
+      return {
+        ...state,
+        lastRefresh: new Date(),
+      };
     default:
       return state;
   }

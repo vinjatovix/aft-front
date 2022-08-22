@@ -7,7 +7,7 @@ export const UserListItem = ({ data: { username, roles, group } }) => (
   <div className="users-list_item">
     <p>{username}</p>
     {group && <p>{group}</p>}
-    {UserRole(roles)}
+    {UserRole({ roles })}
   </div>
 );
 

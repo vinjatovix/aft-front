@@ -8,7 +8,7 @@ export const LoginForm = ({
   message,
 }) => {
   return (
-    <div className="card-grid">
+    <div className="content">
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="text"
