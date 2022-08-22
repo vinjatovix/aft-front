@@ -2,9 +2,9 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import EditCharacterForm from "../../../src/Components/characters/EditCharacterForm";
 import { fetchUpdateCharacter } from "../../../src/http";
-import actions from "../../fixtures/actions";
+import mockActions from "../../fixtures/mockActions";
+import { EditCharacterForm } from "../../../src/Components/characters/EditCharacterForm";
 
 jest.mock("../../../src/http", () => ({
   fetchUpdateCharacter: jest.fn().mockReturnValue({ ok: true }),
@@ -21,6 +21,10 @@ const data = {
 };
 
 const auth = {
+  user: {
+    username: "usertest",
+    roles: [],
+  },
   token: "token",
 };
 
@@ -28,7 +32,7 @@ describe("EditCharacterForm Component", () => {
   it("should render the form with no values", () => {
     render(
       <Router>
-        <EditCharacterForm auth={auth} actions={actions} />
+        <EditCharacterForm auth={auth} actions={mockActions} />
       </Router>
     );
 
@@ -59,7 +63,7 @@ describe("EditCharacterForm Component", () => {
 
     render(
       <Router>
-        <EditCharacterForm auth={auth} data={data} actions={actions} />
+        <EditCharacterForm auth={auth} data={data} actions={mockActions} />
       </Router>
     );
     const inputs = screen.getAllByRole("textbox");

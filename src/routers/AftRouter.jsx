@@ -17,17 +17,17 @@ export const AftRouter = () => (
     <Routes>
       <Route path="/" element={<Screen type="home" />} />
 
-      <Route path="/books" element={<Screen type="books" />} />
+      <Route path="/books" element={<Screen type="book" />} />
       <Route
-        path="/characters/book/:bookId"
-        element={<Screen type="characters" />}
+        path="/book/:bookId/characters"
+        element={<Screen type="character" />}
       />
-      <Route path="/scenes/book/:bookId" element={<Screen type="scenes" />} />
+      <Route path="/book/:bookId/scenes" element={<Screen type="scene" />} />
 
-      <Route path="/works" element={<Screen type="works" />} />
+      <Route path="/works" element={<Screen type="work" />} />
 
       <Route path="/login" element={<LoginScreen />} />
-      <Route path="/users" element={<Screen type="users" />} />
+      <Route path="/users" element={<Screen type="user" />} />
 
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>

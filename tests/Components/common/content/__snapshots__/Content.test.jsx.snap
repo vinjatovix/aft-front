@@ -26,26 +26,30 @@ exports[`Content Component should render characters content 1`] = `
         🎭 Personajes
       </button>
     </a>
-    <img
-      alt="book"
-      class="portrait"
-      src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
-    />
-    <h1>
-      Theresa Larkin
-      -
-      transmitter Refined
-    </h1>
-    <h2>
-      I'll index the auxiliary SAS program, that should interface the USB driver!
-    </h2>
-    <h3
-      data-testid="Personajes:"
+    <div
+      class="content-header"
     >
-      Personajes:
-       
-      3
-    </h3>
+      <h1
+        data-testid="Personajes:"
+      >
+        Personajes:
+         
+        3
+      </h1>
+      <img
+        alt="book"
+        class="portrait"
+        src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+      />
+      <h2>
+        Theresa Larkin
+         - 
+        transmitter Refined
+      </h2>
+      <h6>
+        I'll index the auxiliary SAS program, that should interface the USB driver!
+      </h6>
+    </div>
     <ul
       class="content-list"
     >
@@ -170,26 +174,30 @@ exports[`Content Component should render scenes content 1`] = `
         🎭 Personajes
       </button>
     </a>
-    <img
-      alt="book"
-      class="portrait"
-      src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
-    />
-    <h1>
-      Theresa Larkin
-      -
-      transmitter Refined
-    </h1>
-    <h2>
-      I'll index the auxiliary SAS program, that should interface the USB driver!
-    </h2>
-    <h3
-      data-testid="Escenas:"
+    <div
+      class="content-header"
     >
-      Escenas:
-       
-      4
-    </h3>
+      <h1
+        data-testid="Escenas:"
+      >
+        Escenas:
+         
+        4
+      </h1>
+      <img
+        alt="book"
+        class="portrait"
+        src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
+      />
+      <h2>
+        Theresa Larkin
+         - 
+        transmitter Refined
+      </h2>
+      <h6>
+        I'll index the auxiliary SAS program, that should interface the USB driver!
+      </h6>
+    </div>
     <ul
       class="content-list"
     >

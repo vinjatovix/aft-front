@@ -8,36 +8,38 @@ import { Content } from "../../../../src/Components/common/content/Content";
 import { NavigateButton } from "../../../../src/Components/ui/buttons/NavigateButton";
 import { ContentHeader } from "../../../../src/Components/common/content/ContentHeader";
 import { ContentBody } from "../../../../src/Components/common/content/ContentBody";
-import actions from "../../../fixtures/actions";
-import books from "../../../fixtures/books";
-import scenes from "../../../fixtures/scenes";
-import characters from "../../../fixtures/characters";
+import mockActions from "../../../fixtures/mockActions";
+import mockBooks from "../../../fixtures/mockBooks.json";
+import mockScenes from "../../../fixtures/mockScenes.json";
+import mockCharacters from "../../../fixtures/mockCharacters.json";
+import { mockAuthAdmin } from "../../../fixtures/auth";
+
+const modals = {
+  add: false,
+  blur: false,
+  delete: false,
+  detail: false,
+  edit: false,
+  data: {},
+  lastRefresh: new Date(),
+};
 
 describe("Content Component", () => {
   it("should render scenes content", async () => {
-    const Entity = { data: scenes };
+    const Entity = { data: mockScenes };
 
-    const dispatchEntity = { count: 3 };
-    const isAdmin = true;
-    const auth = { token: "token" };
-    const modals = {
-      add: false,
-      blur: false,
-      delete: false,
-      detail: false,
-      edit: false,
-      data: {},
-    };
+    const isEditor = true;
+    const auth = mockAuthAdmin;
 
     const { container } = render(
       <Router>
-        <Content modals={modals} modalActions={actions} isAdmin={isAdmin}>
-          <NavLink to={`/characters/book/${books[0]._id}`}>
+        <Content modals={modals} actions={mockActions} isEditor={isEditor}>
+          <NavLink to={`/characters/book/${mockBooks[0]._id}`}>
             <NavigateButton text="🎭 Personajes" />
           </NavLink>
 
           <ContentHeader
-            book={books[0]}
+            book={mockBooks[0]}
             title="Escenas:"
             count={Entity.data.length}
           />
@@ -45,8 +47,8 @@ describe("Content Component", () => {
           <ContentBody
             type="scene"
             content={Entity.data}
-            isAdmin={isAdmin}
-            actions={actions}
+            isEditor={isEditor}
+            actions={mockActions}
             token={auth.token}
           />
         </Content>
@@ -57,28 +59,20 @@ describe("Content Component", () => {
   });
 
   it("should render characters content", async () => {
-    const Entity = { data: characters };
+    const Entity = { data: mockCharacters };
 
-    const isAdmin = true;
+    const isEditor = true;
     const auth = { token: "token" };
-    const modals = {
-      add: false,
-      blur: false,
-      delete: false,
-      detail: false,
-      edit: false,
-      data: {},
-    };
 
     const { container } = render(
       <Router>
-        <Content modals={modals} modalActions={actions} isAdmin={isAdmin}>
-          <NavLink to={`/characters/book/${books[0]._id}`}>
+        <Content modals={modals} actions={mockActions} isEditor={isEditor}>
+          <NavLink to={`/characters/book/${mockBooks[0]._id}`}>
             <NavigateButton text="🎭 Personajes" />
           </NavLink>
 
           <ContentHeader
-            book={books[0]}
+            book={mockBooks[0]}
             title="Personajes:"
             count={Entity.data.length}
           />
@@ -86,8 +80,8 @@ describe("Content Component", () => {
           <ContentBody
             type="character"
             content={Entity.data}
-            isAdmin={isAdmin}
-            actions={actions}
+            isEditor={isEditor}
+            actions={mockActions}
             token={auth.token}
           />
         </Content>

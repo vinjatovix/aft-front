@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { AdminButtons } from "../../ui/admin/AdminButtons";
 
-export const ContentListDetail = ({ actions, item, token, isAdmin, type }) => {
+export const ContentListDetail = ({ actions, item, token, isEditor, type }) => {
   const scene = (
     <p>
       {item.name}-{item.location} {item.time}: {item.description}.
@@ -24,7 +24,7 @@ export const ContentListDetail = ({ actions, item, token, isAdmin, type }) => {
         {type === "scene" && scene}
         {type === "character" && character}
       </div>
-      {isAdmin && (
+      {isEditor && (
         <AdminButtons type="row" actions={actions} item={item} token={token} />
       )}
     </>
@@ -48,9 +48,9 @@ ContentListDetail.propTypes = {
     _id: PropTypes.string.isRequired,
   }).isRequired,
   token: PropTypes.string.isRequired,
-  isAdmin: PropTypes.bool,
+  isEditor: PropTypes.bool,
 };
 
 ContentListDetail.defaultProps = {
-  isAdmin: false,
+  isEditor: false,
 };

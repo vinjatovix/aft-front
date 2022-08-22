@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 
 export const ContentHeader = ({ book, title, count }) => {
   return (
-    <>
+    <div className="content-header">
+      <h1 data-testid={title}>
+        {title} {count}
+      </h1>
       {book && (
         <>
           <img
@@ -15,17 +18,13 @@ export const ContentHeader = ({ book, title, count }) => {
             }
             alt="book"
           />
-          <h1>
-            {book.author}-{book.name}
-          </h1>
-          <h2>{book.description}</h2>
+          <h2>
+            {book.author} - {book.name}
+          </h2>
+          <h6>{book.description}</h6>
         </>
       )}
-
-      <h3 data-testid={title}>
-        {title} {count}
-      </h3>
-    </>
+    </div>
   );
 };
 

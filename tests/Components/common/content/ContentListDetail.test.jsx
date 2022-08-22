@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ContentListDetail } from "../../../../src/Components/common/content/ContentListDetail";
-import actions from "../../../fixtures/actions";
+import mockActions from "../../../fixtures/mockActions";
 
 describe("ContentListDetail Component", () => {
   it("should render a scene as admin", async () => {
@@ -12,7 +12,7 @@ describe("ContentListDetail Component", () => {
       <Router>
         <ContentListDetail
           type="scene"
-          actions={actions}
+          actions={mockActions}
           item={{
             _id: "5e9f8f8f8f8f8f8f8f8f8f8",
             name: "Escena",
@@ -30,7 +30,7 @@ describe("ContentListDetail Component", () => {
               name: "Escena",
             },
           }}
-          isAdmin={true}
+          isEditor={true}
           token="token"
         />
       </Router>
@@ -44,7 +44,7 @@ describe("ContentListDetail Component", () => {
       <Router>
         <ContentListDetail
           type="scene"
-          actions={actions}
+          actions={mockActions}
           item={{
             _id: "5e9f8f8f8f8f8f8f8f8f8f8",
             name: "Escena",
@@ -62,7 +62,7 @@ describe("ContentListDetail Component", () => {
               name: "Escena",
             },
           }}
-          isAdmin={false}
+          isEditor={false}
           token="token"
         />
       </Router>
@@ -76,7 +76,7 @@ describe("ContentListDetail Component", () => {
       <Router>
         <ContentListDetail
           type="character"
-          actions={actions}
+          actions={mockActions}
           item={{
             _id: "5e9f8f8f8f8f8f8f8f8f8f8",
             name: "Personaje",
@@ -94,7 +94,7 @@ describe("ContentListDetail Component", () => {
               name: "Escena",
             },
           }}
-          isAdmin={true}
+          isEditor={true}
           token="token"
         />
       </Router>
@@ -108,7 +108,7 @@ describe("ContentListDetail Component", () => {
       <Router>
         <ContentListDetail
           type="character"
-          actions={actions}
+          actions={mockActions}
           item={{
             _id: "5e9f8f8f8f8f8f8f8f8f8f8",
             name: "Personaje",
@@ -126,7 +126,7 @@ describe("ContentListDetail Component", () => {
               name: "Escena",
             },
           }}
-          isAdmin={false}
+          isEditor={false}
           token="token"
         />
       </Router>
