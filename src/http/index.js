@@ -38,10 +38,15 @@ export const fetcher = async (path, method, { body, token, version = "v1" }) =>
     ...(body ? { body: _pack(body) } : {}),
   });
 
-export const fetchLogin = async (body) =>
-  fetcher(api.authentication.login.path, api.authentication.login.method, {
-    body,
-  });
+export const fetchLogin = async (body) => {
+  return fetcher(
+    api.authentication.login.path,
+    api.authentication.login.method,
+    {
+      body,
+    }
+  );
+};
 
 export const fetchUpdatePassword = async (token, body) =>
   fetcher(
@@ -76,9 +81,6 @@ export const fetchAddWork = async (token, body) =>
     body,
   });
 
-export const fetchBooks = async (token) =>
-  fetcher(api.book.getAll.path, api.book.getAll.method, { token });
-
 export const fetchBookById = async (token, id) =>
   fetcher(api.book.getById.path.replace(":id", id), api.book.getById.method, {
     token,
@@ -109,15 +111,6 @@ export const fetchUpdateBook = async (token, id, body) =>
     }
   );
 
-export const fetchCharactersByBookId = async (token, id) =>
-  fetcher(
-    api.character.getByBookId.path.replace(":id", id),
-    api.character.getByBookId.method,
-    {
-      token,
-    }
-  );
-
 export const fetchAddCharacter = async (token, body) =>
   fetcher(api.character.addCharacter.path, api.character.addCharacter.method, {
     token,
@@ -143,9 +136,6 @@ export const fetchDeleteCharacter = async (token, id) =>
     }
   );
 
-export const fetchUsers = async (token) =>
-  fetcher(api.user.getAll.path, api.user.getAll.method, { token });
-
 export const fetchAddScene = async (token, body) =>
   fetcher(api.scene.addScene.path, api.scene.addScene.method, {
     token,
@@ -166,15 +156,6 @@ export const fetchDeleteScene = async (token, id) =>
   fetcher(
     api.scene.deleteScene.path.replace(":id", id),
     api.scene.deleteScene.method,
-    {
-      token,
-    }
-  );
-
-export const fetchScenesByBookId = async (token, id) =>
-  fetcher(
-    api.scene.getByBookId.path.replace(":id", id),
-    api.scene.getByBookId.method,
     {
       token,
     }

@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   data: null,
 };
 
-const useFetch = (
+export const useFetch = (
   path,
   method,
   { body, token, version = "v1", run = null }
@@ -40,5 +40,3 @@ const useFetch = (
 
   return [state, reFetch];
 };
-
-export default useFetch;

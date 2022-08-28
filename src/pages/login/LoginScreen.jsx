@@ -1,64 +1,57 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../../contexts/UserContext";
-import { fetchLogin } from "../../http";
+import React from "react";
+import { Formik, Form } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import * as yup from "yup";
 
-import { LoginForm } from "../../Components/login/LoginForm";
-import { UserPanel } from "../../Components/login/UserPanel";
+import TextInputField from "../../Components/common/TextInputField";
+import Button from "../../Components/ui/buttons/Button";
+import { login } from "../../helpers/login";
 
-import { useForm } from "../../hooks/useForm";
-
-import { isAuthenticated } from "../../helpers/isAuthenticated";
-import { resetMessage } from "../../helpers/resetMessage";
-
-const INIT_MESSAGE = { type: null, text: null };
+const validationSchema = yup.object().shape({
+  username: yup.string().required("Username is required"),
+  password: yup.string().required("Password is required"),
+});
 
 export const LoginScreen = () => {
-  const { auth, setAuth } = useContext(UserContext);
-  const [responseMessage, setResponseMessage] = useState(INIT_MESSAGE);
-
-  const [formState, handleChange, resetForm] = useForm({
-    username: "",
-    password: "",
-  });
-
-  const submit = async () => {
-    const res = await fetchLogin(formState);
-
-    if (res.ok) {
-      const data = await res.json();
-      localStorage.setItem("token", data.token);
-      setAuth(data.user);
-      resetForm();
-    } else {
-      const error = await res.json();
-      setResponseMessage({ type: "error", text: error.id });
-      resetMessage(setResponseMessage, INIT_MESSAGE, resetForm);
-      resetForm();
-    }
+  const dispatch = useDispatch();
+  const { loading, error, loginValues } = useSelector((state) => state.auth);
+  const initialValues = {
+    username: loginValues?.username || "",
+    password: loginValues?.password || "",
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    submit();
-  };
-
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    setAuth({});
+  const handleLogin = (values) => {
+    dispatch(login(values.username, values.password));
   };
 
   return (
     <>
-      {isAuthenticated(auth) ? (
-        <UserPanel auth={auth} handleLogOut={handleLogOut} />
-      ) : (
-        <LoginForm
-          formState={formState}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          message={responseMessage}
-        />
-      )}
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}
+      >
+        <Form className="login-form">
+          <TextInputField
+            name="username"
+            label="username"
+            placeholder="Enter username"
+            error={error?.username?.msg}
+          />
+
+          <TextInputField
+            name="password"
+            label="password"
+            type="password"
+            placeholder="Enter password"
+            error={error?.password?.msg}
+          />
+          <Button type="submit" loading={loading}>
+            Login
+          </Button>
+          {error && <p className={error.type}>{error.text}</p>}
+        </Form>
+      </Formik>
     </>
   );
 };

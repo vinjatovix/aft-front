@@ -6,7 +6,7 @@ import { api } from "../../../http/api";
 import { Card } from "./Card";
 import { ContentHeader } from "../content/ContentHeader";
 
-import useFetch from "../../../hooks/useFetch";
+import { useFetch } from "../../../hooks/useFetch";
 
 export const CardGrid = ({
   actions,

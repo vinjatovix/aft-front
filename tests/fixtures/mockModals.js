@@ -5,5 +5,5 @@ export const mockModals = {
   detail: false,
   edit: false,
   data: {},
-  lastRefresh: new Date(),
+  lastRefresh: +new Date(),
 };
