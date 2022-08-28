@@ -1,29 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../../../contexts/UserContext";
-import { checkToken } from "./checkToken";
-
 const NavBar = () => {
-  const {
-    auth: { user },
-    setAuth,
-  } = useContext(UserContext);
-  const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    checkToken(token, setAuth);
-  }, [token, setAuth]);
+  const { user } = useSelector((state) => state.auth);
 
   const activeLink = ({ isActive }) => (isActive ? "detail" : "");
   return (
     <nav className="nav-bar">
       <h1>AFT</h1>
       <ul className="nav-bar_list">
-        <NavLink to="/" className={activeLink}>
-          🏠 Inicio
-        </NavLink>
-        {user?.username && (
+        {user?.username ? (
           <>
+            <NavLink to="/" className={activeLink}>
+              🏠 Inicio
+            </NavLink>
             <NavLink to="/books" className={activeLink}>
               📚 Obras
             </NavLink>
@@ -31,10 +21,11 @@ const NavBar = () => {
               📝Trabajos
             </NavLink>
           </>
+        ) : (
+          <NavLink to="/login" className={activeLink}>
+            🔐 Login
+          </NavLink>
         )}
-        <NavLink to="/login" className={activeLink}>
-          🔐 Login
-        </NavLink>
       </ul>
     </nav>
   );

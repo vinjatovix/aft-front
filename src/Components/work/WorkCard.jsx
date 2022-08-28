@@ -7,28 +7,28 @@ export const WorkCard = ({ data }) => {
   return (
     <ul className="work-list">
       <ListItem
-        name="Intérprete"
-        children={<p>by: {data.metadata.createdBy}</p>}
+        name="interprete"
+        children={<>by: {data.metadata.createdBy}</>}
         liKey={data.metadata.createdBy}
       />
       <ListItem
-        name="Obra"
-        children={<p>Obra: {data.character.book.name}</p>}
+        name="obra"
+        children={<>Obra: {data.character.book.name}</>}
         liKey={data.character.book._id}
       />
       <ListItem
-        name="Personaje"
-        children={<p>Personaje: {data.character.name}</p>}
+        name="personaje"
+        children={<>Personaje: {data.character.name}</>}
         liKey={data.character._id}
       />
       <ListItem
-        name="Escena"
-        children={<p>Escena: {data.scene.name}</p>}
+        name="escena"
+        children={<>Escena: {data.scene.name}</>}
         liKey={data.scene._id}
       />
       <ListItem
-        name="Descripción"
-        children={<p>Descripción: {data.description}</p>}
+        name="descripcion"
+        children={<>Descripción: {data.description}</>}
       />
     </ul>
   );

@@ -21,7 +21,7 @@ const modals = {
   detail: false,
   edit: false,
   data: {},
-  lastRefresh: new Date(),
+  lastRefresh: +new Date(),
 };
 
 describe("Content Component", () => {

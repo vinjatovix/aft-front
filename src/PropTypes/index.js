@@ -11,7 +11,7 @@ export const modalActionsType = PropTypes.shape({
 }).isRequired;
 
 export const modalsStateType = PropTypes.shape({
-  lastRefresh: PropTypes.instanceOf(Date).isRequired,
+  lastRefresh: PropTypes.number.isRequired,
   blur: PropTypes.bool.isRequired,
   detail: PropTypes.bool.isRequired,
   edit: PropTypes.bool.isRequired,

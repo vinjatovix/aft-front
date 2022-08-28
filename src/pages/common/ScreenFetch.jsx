@@ -14,7 +14,7 @@ import { EditCharacterForm } from "../../Components/characters/EditCharacterForm
 import { EditSceneForm } from "../../Components/scenes/EditSceneForm";
 import { NavigateButton } from "../../Components/ui/buttons/NavigateButton";
 
-import useFetch from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 
 import { getBook } from "../../helpers/getBook";
 import { getComponentConfig } from "../../helpers/getComponentConfig";
@@ -30,7 +30,7 @@ const _deleteInstanceByType =
     const res =
       type === "scene"
         ? await fetchDeleteScene(token, _id)
-        : await fetchDeleteCharacter(token, "_id");
+        : await fetchDeleteCharacter(token, _id);
     if (res.ok) {
       actions.close();
       reFetch();

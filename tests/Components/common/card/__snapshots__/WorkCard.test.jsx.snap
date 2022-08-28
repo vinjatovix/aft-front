@@ -7,48 +7,38 @@ exports[`WorkCard Component should match snapshot 1`] = `
   >
     <li
       class=""
-      data-testid="Intérprete"
+      data-testid="interprete"
     >
-      <p>
-        by: 
-        user
-      </p>
+      by: 
+      user
     </li>
     <li
       class=""
-      data-testid="Obra"
+      data-testid="obra"
     >
-      <p>
-        Obra: 
-        Obra
-      </p>
+      Obra: 
+      Obra
     </li>
     <li
       class=""
-      data-testid="Personaje"
+      data-testid="personaje"
     >
-      <p>
-        Personaje: 
-        Personaje
-      </p>
+      Personaje: 
+      Personaje
     </li>
     <li
       class=""
-      data-testid="Escena"
+      data-testid="escena"
     >
-      <p>
-        Escena: 
-        Escena
-      </p>
+      Escena: 
+      Escena
     </li>
     <li
       class=""
-      data-testid="Descripción"
+      data-testid="descripcion"
     >
-      <p>
-        Descripción: 
-        Descripción
-      </p>
+      Descripción: 
+      Descripción
     </li>
   </ul>
 </div>
