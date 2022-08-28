@@ -1,27 +1,35 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 
-import { ActionButton } from "../ui/buttons/ActionButton";
+import { ActionButton } from "./buttons/ActionButton";
 import { Card } from "../common/card/Card";
-import { ChangePasswordForm } from "./ChangePasswordForm";
-import { NavigateButton } from "../ui/buttons/NavigateButton";
+import { ChangePasswordForm } from "../login/ChangePasswordForm";
+import { NavigateButton } from "./buttons/NavigateButton";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../helpers/logout";
 
-export const UserPanel = ({ auth, handleLogOut }) => {
+export const UserPanel = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const [modals, setModals] = useState({
     password: false,
     blur: false,
   });
-  const isEditor = auth.user.roles.includes("aft.admin");
+  const isEditor = user.roles.includes("aft.admin");
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <>
       <div data-testid="user-panel" className={modals.password ? "blur" : ""}>
         <div className="grid">
           <div className="user-dashboard">
-            <Card type="user" data={auth.user} />
+            <Card type="user" data={user} />
 
             <ActionButton
-              action={handleLogOut}
+              action={handleLogout}
               text="Logout"
               type="btn-big bg-red"
             />
@@ -55,21 +63,11 @@ export const UserPanel = ({ auth, handleLogOut }) => {
               </span>
             </div>
             <div className="modal-body">
-              <ChangePasswordForm user={auth.user} />
+              <ChangePasswordForm user={user} />
             </div>
           </div>
         </div>
       )}
     </>
   );
-};
-
-UserPanel.propTypes = {
-  auth: PropTypes.shape({
-    user: PropTypes.shape({
-      roles: PropTypes.arrayOf(PropTypes.string),
-      username: PropTypes.string,
-    }),
-  }).isRequired,
-  handleLogOut: PropTypes.func.isRequired,
 };

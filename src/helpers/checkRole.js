@@ -1,5 +1,5 @@
-export const checkRole = (auth, role) => {
-  const { roles = [] } = auth.user || {};
+export const checkRole = (user, role) => {
+  const { roles = [] } = user;
 
   return roles.includes(`aft.${role}`);
 };

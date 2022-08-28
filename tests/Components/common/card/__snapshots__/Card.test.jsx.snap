@@ -13,25 +13,25 @@ exports[`Card Component should render a book card 1`] = `
         data-testid="book-detail"
       >
         <img
-          alt="Obra"
+          alt="transmitter Refined"
           src="https://boxshot.com/3d-book-cover/how-to-make-a-3d-book-cover-in-photoshop/sample.jpg"
         />
         <li
           class=""
           data-testid="Obra"
         >
-          Obra
+          transmitter Refined
         </li>
         <li
           class="small"
           data-testid="Autor"
         >
-          Autor
+          Theresa Larkin
         </li>
       </ul>
       <a
         class=""
-        href="/book/5e9f8f8f8f8f8f8f8f8f8f8/characters"
+        href="/book/6301216103b6fbb712bbde7c/characters"
       >
         <button
           class="bg-blue"
@@ -42,7 +42,7 @@ exports[`Card Component should render a book card 1`] = `
       </a>
       <a
         class=""
-        href="/book/5e9f8f8f8f8f8f8f8f8f8f8/scenes"
+        href="/book/6301216103b6fbb712bbde7c/scenes"
       >
         <button
           class="bg-blue"
@@ -53,13 +53,5 @@ exports[`Card Component should render a book card 1`] = `
       </a>
     </div>
   </div>
-</div>
-`;
-
-exports[`Card Component should render a works card 1`] = `
-<div>
-  <div
-    class="card"
-  />
 </div>
 `;

@@ -22,7 +22,7 @@ export const modalReducer = (state, action) => {
     case "REFRESH":
       return {
         ...state,
-        lastRefresh: new Date(),
+        lastRefresh: +new Date(),
       };
     default:
       return state;
